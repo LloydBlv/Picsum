@@ -12,3 +12,7 @@ fun loadResponse(fileName: String): BufferedSource {
     val file = File(path)
     return file.source().buffer()
 }
+fun loadResponseString(fileName: String): String {
+    val path = "$BASE_DIRECTORY$fileName"
+    return File(path).bufferedReader().use { it.readText() }
+}

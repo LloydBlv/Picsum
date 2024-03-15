@@ -37,6 +37,8 @@ dependencies {
     implementation(project(":libs:domain"))
     implementation(libs.retrofit)
     implementation(libs.moshi)
+    testImplementation(libs.mockwebserver)
+    implementation(libs.converter.moshi)
     testImplementation(libs.assertk)
     testImplementation(libs.kotlinx.coroutines.test)
     ksp(libs.moshi.kotlin.codegen)

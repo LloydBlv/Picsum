@@ -19,7 +19,7 @@ data class PhotoDto(
     @Json(name = "author_url") val authorUrl: String?,
 )
 
-fun PhotoDto.toPhoto(): Photo {
+internal fun PhotoDto.toPhoto(): Photo {
     return Photo(
         size = Size(width ?: 0, height ?: 0),
         fileName = FileName(fileName.orEmpty()),
