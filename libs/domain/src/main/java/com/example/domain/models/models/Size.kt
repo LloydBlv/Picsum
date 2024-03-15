@@ -1,4 +1,4 @@
-package com.example.domain.models
+package com.example.domain.models.models
 
 data class Size(
     val width: Int,

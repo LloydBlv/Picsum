@@ -1,7 +1,7 @@
 package com.example.data
 
-import com.example.domain.models.Photo
-import com.example.domain.models.PhotoRepository
+import com.example.domain.models.models.Photo
+import com.example.domain.models.repositories.PhotoRepository
 import com.example.domain.models.Result
 import com.example.domain.models.toSuccess
 import com.squareup.moshi.JsonAdapter

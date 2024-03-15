@@ -2,7 +2,7 @@ package com.example.data
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.example.domain.models.GetPhotosUseCase
+import com.example.domain.models.usecases.GetPhotosUseCase
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
 import kotlinx.coroutines.test.runTest

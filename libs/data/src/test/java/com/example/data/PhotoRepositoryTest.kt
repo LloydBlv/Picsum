@@ -5,11 +5,11 @@ import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
 import assertk.assertions.prop
-import com.example.domain.models.Author
-import com.example.domain.models.FileName
-import com.example.domain.models.Id
-import com.example.domain.models.Photo
-import com.example.domain.models.Size
+import com.example.domain.models.models.Author
+import com.example.domain.models.models.FileName
+import com.example.domain.models.models.Id
+import com.example.domain.models.models.Photo
+import com.example.domain.models.models.Size
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 

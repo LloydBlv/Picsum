@@ -1,10 +1,10 @@
 package com.example.data
 
-import com.example.domain.models.Author
-import com.example.domain.models.FileName
-import com.example.domain.models.Id
-import com.example.domain.models.Photo
-import com.example.domain.models.Size
+import com.example.domain.models.models.Author
+import com.example.domain.models.models.FileName
+import com.example.domain.models.models.Id
+import com.example.domain.models.models.Photo
+import com.example.domain.models.models.Size
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
