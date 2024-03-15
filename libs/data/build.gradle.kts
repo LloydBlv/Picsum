@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":libs:domain"))
+    implementation("com.slack.eithernet:eithernet:1.8.1")
     implementation(libs.retrofit)
     implementation(libs.moshi)
     testImplementation(libs.mockwebserver)

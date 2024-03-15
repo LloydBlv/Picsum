@@ -2,6 +2,8 @@ package com.example.data
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import com.slack.eithernet.ApiResultCallAdapterFactory
+import com.slack.eithernet.ApiResultConverterFactory
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -24,6 +26,8 @@ class GetPhotosUseCaseTest {
         photoService = Retrofit.Builder()
             .baseUrl(mockWebServer.url("/"))
             .client(OkHttpClient())
+            .addConverterFactory(ApiResultConverterFactory)
+            .addCallAdapterFactory(ApiResultCallAdapterFactory)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create(PhotoService::class.java)
@@ -41,7 +45,7 @@ class GetPhotosUseCaseTest {
         val repository = PhotoRepositoryDefault(photoService)
         val getPhotosUseCase = GetPhotosUseCase(repository)
 
-        val result = getPhotosUseCase()
+        val result = getPhotosUseCase().getResultOrNull()!!
         assertThat(result.size).isEqualTo(993)
     }
 }

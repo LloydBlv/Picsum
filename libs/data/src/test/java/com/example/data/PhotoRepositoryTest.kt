@@ -17,7 +17,7 @@ class PhotoRepositoryTest {
     @Test
     fun `repository maps to domain objects correctly`() = runTest {
         val photoRepository = PhotoRepositoryFake()
-        val photos = photoRepository.getPhotos()
+        val photos = photoRepository.getPhotos().getResultOrNull()!!
         assertThat(photos).all {
             hasSize(993)
             transform { it.first() }.all {
