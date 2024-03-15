@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp").version("1.9.0-1.0.13")
 }
 
 android {
@@ -33,7 +34,12 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":libs:domain"))
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    testImplementation("com.willowtreeapps.assertk:assertk:0.28.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+    kspTest("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
