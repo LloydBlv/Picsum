@@ -35,11 +35,11 @@ android {
 
 dependencies {
     implementation(project(":libs:domain"))
-    implementation("com.squareup.moshi:moshi:1.15.0")
-    testImplementation("com.willowtreeapps.assertk:assertk:0.28.0")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
-    kspTest("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+    implementation(libs.retrofit)
+    implementation(libs.moshi)
+    testImplementation(libs.assertk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    ksp(libs.moshi.kotlin.codegen)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
