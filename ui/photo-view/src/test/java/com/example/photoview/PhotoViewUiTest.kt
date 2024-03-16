@@ -36,7 +36,8 @@ class PhotoViewUiTest {
                 state = PhotoViewUiState(
                     size = Size(width = 5000, height = 3333),
                     imageUrl = "https://example.com/image.jpg",
-                    authorName = "author1"
+                    authorName = "author1",
+                    eventSink = {}
                 )
             )
         }
@@ -50,7 +51,8 @@ class PhotoViewUiTest {
                 state = PhotoViewUiState(
                     size = Size(width = 3887, height = 4899),
                     imageUrl = "https://example.com/image.jpg",
-                    authorName = "author1"
+                    authorName = "author1",
+                    eventSink = {}
                 )
             )
         }

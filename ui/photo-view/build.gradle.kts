@@ -52,6 +52,7 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.ui.test.junit4)
     testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.assertk)
 
     implementation(libs.circuit.runtime.presenter)
     testImplementation(libs.circuit.test)

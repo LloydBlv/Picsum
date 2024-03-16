@@ -24,7 +24,7 @@ import androidx.compose.ui.graphics.Color
 
 
 @Composable
-fun PhotoViewScreen(
+internal fun PhotoViewScreen(
     modifier: Modifier = Modifier,
     state: PhotoViewUiState
 ) {
@@ -62,7 +62,7 @@ private fun PhotoViewContent(state: PhotoViewUiState, modifier: Modifier) {
 }
 
 @Composable
-fun PortraitPhotoView(state: PhotoViewUiState, modifier: Modifier) {
+internal fun PortraitPhotoView(state: PhotoViewUiState, modifier: Modifier) {
     Column(modifier = modifier) {
         PicsumImage(
             modifier = Modifier
@@ -74,19 +74,19 @@ fun PortraitPhotoView(state: PhotoViewUiState, modifier: Modifier) {
 }
 
 @Composable
-fun AuthorNameText(authorName: String, modifier: Modifier = Modifier) {
+internal fun AuthorNameText(authorName: String, modifier: Modifier = Modifier) {
     Text(text = authorName, modifier = modifier.fillMaxWidth())
 }
 
 @Composable
-fun PicsumImage(modifier: Modifier = Modifier) {
+internal fun PicsumImage(modifier: Modifier = Modifier) {
     Box(modifier = modifier.background(Color.Red)) {
 
     }
 }
 
 @Composable
-fun LandscapePhotoView(state: PhotoViewUiState, modifier: Modifier) {
+internal fun LandscapePhotoView(state: PhotoViewUiState, modifier: Modifier) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
