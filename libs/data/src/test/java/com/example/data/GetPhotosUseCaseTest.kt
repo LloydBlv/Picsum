@@ -1,8 +1,10 @@
 package com.example.data
 
+import app.cash.turbine.test
 import assertk.assertThat
-import assertk.assertions.isEqualTo
+import assertk.assertions.hasSize
 import com.example.domain.models.usecases.GetPhotosUseCase
+import com.example.testing.TestData
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
 import kotlinx.coroutines.test.runTest
@@ -46,7 +48,9 @@ class GetPhotosUseCaseTest {
         val repository = PhotoRepositoryDefault(photoService)
         val getPhotosUseCase = GetPhotosUseCase(repository)
 
-        val result = getPhotosUseCase().getResultOrNull()!!
-        assertThat(result.size).isEqualTo(993)
+        getPhotosUseCase.invoke(Unit)
+        getPhotosUseCase.flow.test {
+            assertThat(awaitItem().getOrNull()!!).hasSize(993)
+        }
     }
 }

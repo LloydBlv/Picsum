@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp").version("1.9.22-1.0.17")
 }
 
 android {
-    namespace = "com.example.data"
+    namespace = "com.example.testing"
     compileSdk = 34
 
     defaultConfig {
@@ -35,16 +34,7 @@ android {
 
 dependencies {
     implementation(project(":libs:domain"))
-    testImplementation(project(":common:testing"))
-    implementation("com.slack.eithernet:eithernet:1.8.1")
-    testImplementation("app.cash.turbine:turbine:1.1.0")
-    implementation(libs.retrofit)
-    api(libs.moshi)
-    testImplementation(libs.mockwebserver)
-    implementation(libs.converter.moshi)
-    testImplementation(libs.assertk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    ksp(libs.moshi.kotlin.codegen)
+    implementation(project(":libs:data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

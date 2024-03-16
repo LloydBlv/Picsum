@@ -1,5 +1,6 @@
 package com.example.domain.models
 
+/*
 sealed interface Result<out T> {
     fun getResultOrNull(): T? = when (this) {
         is Success -> value
@@ -10,3 +11,4 @@ sealed interface Result<out T> {
 }
 
 inline fun <reified T> T.toSuccess(): Result<T> = Result.Success(this)
+*/

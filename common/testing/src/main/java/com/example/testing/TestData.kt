@@ -1,5 +1,6 @@
-package com.example.data
+package com.example.testing
 
+import com.example.data.PhotoDto
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import okio.BufferedSource

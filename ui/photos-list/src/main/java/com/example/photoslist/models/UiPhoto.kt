@@ -1,11 +1,11 @@
-package com.example.photoslist
+package com.example.photoslist.models
 
 import androidx.compose.runtime.Immutable
 import com.example.domain.models.models.Author
 import com.example.domain.models.models.FileName
 import com.example.domain.models.models.Id
+import com.example.domain.models.models.Photo
 import com.example.domain.models.models.Size
-import kotlinx.collections.immutable.ImmutableList
 
 @Immutable
 data class UiPhoto(
@@ -14,11 +14,11 @@ data class UiPhoto(
     val id: Id,
     val author: Author
 )
-sealed interface PhotoListUiState {
-    data object Loading : PhotoListUiState
-    @Immutable
-    data class Success(val photos: ImmutableList<UiPhoto>) : PhotoListUiState
 
-    @Immutable
-    data class Failure(val error: Throwable?) : PhotoListUiState
+fun Photo.toUiPhoto(): UiPhoto {
+    return UiPhoto(
+        size = size,
+        fileName = fileName,
+        id = id,
+        author = author)
 }

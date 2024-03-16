@@ -1,9 +1,10 @@
-package com.example.photoslist
+package com.example.photoslist.composables
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.photoslist.models.PhotoListUiState
 
 @SuppressLint("UnusedContentLambdaTargetStateParameter")
 @Composable

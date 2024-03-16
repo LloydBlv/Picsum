@@ -1,4 +1,4 @@
-package com.example.photoslist
+package com.example.photoslist.composables
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

@@ -9,6 +9,9 @@ import com.example.domain.models.models.Author
 import com.example.domain.models.models.FileName
 import com.example.domain.models.models.Id
 import com.example.domain.models.models.Size
+import com.example.photoslist.composables.PhotosListScreen
+import com.example.photoslist.models.PhotoListUiState
+import com.example.photoslist.models.UiPhoto
 import kotlinx.collections.immutable.toPersistentList
 import org.junit.Rule
 import org.junit.Test

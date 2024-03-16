@@ -5,7 +5,7 @@ import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
 import assertk.assertions.prop
-import com.example.data.TestData.provideTestPhotoDtos
+import com.example.testing.TestData.provideTestPhotoDtos
 import com.squareup.moshi.Moshi
 import org.junit.Assert.assertEquals
 import org.junit.Before

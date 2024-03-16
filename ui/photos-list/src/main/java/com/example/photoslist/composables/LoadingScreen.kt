@@ -1,4 +1,4 @@
-package com.example.photoslist
+package com.example.photoslist.composables
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.foundation.layout.size
