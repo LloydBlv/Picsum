@@ -20,7 +20,7 @@ fun PhotosListScreen(
     ) {
         when (state) {
             is PhotoListUiState.Failure -> {
-                FailureScreen(state.error)
+                FailureScreen(state.error, eventSink)
             }
 
             PhotoListUiState.Loading -> {

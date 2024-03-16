@@ -1,11 +1,13 @@
 package com.example.photoslist
 
+import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.domain.models.models.Author
 import com.example.domain.models.models.FileName
 import com.example.domain.models.models.Id
@@ -114,5 +116,24 @@ class PhotosListScreenTest {
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
         composeTestRule.onNodeWithTag("photo_list").assertIsNotDisplayed()
         composeTestRule.onNodeWithText(error.message!!).assertIsDisplayed()
+    }
+
+    @Test
+    fun `when state is error, retry button is clickable`() {
+        val events = TestEventSink<PhotosListEvents>()
+
+        val error = Throwable("error message")
+        composeTestRule.setContent {
+            PhotosListScreen(state = PhotoListUiState.Failure(error, events))
+        }
+        composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
+        composeTestRule.onNodeWithTag("photo_list").assertIsNotDisplayed()
+
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        composeTestRule.onNodeWithText(context.getString(R.string.retry)).run {
+            assertIsDisplayed()
+            performClick()
+        }
+        events.assertEvents(PhotosListEvents.RetryClicked)
     }
 }

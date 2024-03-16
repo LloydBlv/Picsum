@@ -22,7 +22,7 @@ class PhotosListPresenterTest {
         presenter.test {
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual == PhotoListUiState.Loading)
-            ensureAllEventsConsumed()
+            cancelAndIgnoreRemainingEvents()
         }
     }
 
@@ -31,7 +31,6 @@ class PhotosListPresenterTest {
         val getPhotosUseCase = GetPhotosUseCase(PhotoRepositoryFake())
         val presenter = PhotosListPresenter(getPhotosUseCase)
         presenter.test {
-            getPhotosUseCase.invoke(Unit)
             skipItems(1)
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual is PhotoListUiState.Success)
@@ -47,7 +46,6 @@ class PhotosListPresenterTest {
         val getPhotosUseCase = GetPhotosUseCase(repository)
         val presenter = PhotosListPresenter(getPhotosUseCase)
         presenter.test {
-            getPhotosUseCase.invoke(Unit)
             skipItems(1)
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual is PhotoListUiState.Failure)
