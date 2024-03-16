@@ -5,7 +5,9 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.prop
 import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
+import com.example.photoslist.models.PhotosListEvents
 import com.example.screens.PhotosListScreen
+import com.example.screens.ViewPhotoScreen
 import com.example.testing.PhotoRepositoryFake
 import com.slack.circuit.test.FakeNavigator
 import com.slack.circuit.test.test
@@ -36,6 +38,22 @@ class PhotosListPresenterTest {
             skipItems(1)
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual is PhotoListUiState.Success)
+            ensureAllEventsConsumed()
+        }
+    }
+
+    @Test
+    fun `whe state is success, clicking photos navigates to view photo screen`() = runTest {
+        val getPhotosUseCase = GetPhotosUseCase(PhotoRepositoryFake())
+        val navigator = FakeNavigator(PhotosListScreen)
+        val presenter = PhotosListPresenter(getPhotosUseCase, navigator)
+        presenter.test {
+            skipItems(1)
+            val actual: PhotoListUiState = awaitItem()
+            assertThat(actual is PhotoListUiState.Success)
+            val photo = (actual as PhotoListUiState.Success).photos.first()
+            actual.eventSink.invoke(PhotosListEvents.PhotoClicked(photo))
+            assertThat(navigator.awaitNextScreen()).isEqualTo(ViewPhotoScreen(photo.id.id))
             ensureAllEventsConsumed()
         }
     }
