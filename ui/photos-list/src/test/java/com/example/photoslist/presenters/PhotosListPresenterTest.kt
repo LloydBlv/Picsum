@@ -43,7 +43,7 @@ class PhotosListPresenterTest {
     }
 
     @Test
-    fun `whe state is success, clicking photos navigates to view photo screen`() = runTest {
+    fun `when state is success, clicking photos navigates to view photo screen`() = runTest {
         val getPhotosUseCase = GetPhotosUseCase(PhotoRepositoryFake())
         val navigator = FakeNavigator(PhotosListScreen)
         val presenter = PhotosListPresenter(getPhotosUseCase, navigator)
@@ -54,6 +54,7 @@ class PhotosListPresenterTest {
             val photo = (actual as PhotoListUiState.Success).photos.first()
             actual.eventSink.invoke(PhotosListEvents.PhotoClicked(photo))
             assertThat(navigator.awaitNextScreen()).isEqualTo(ViewPhotoScreen(photo.id.id))
+            navigator.expectNoEvents()
             ensureAllEventsConsumed()
         }
     }
