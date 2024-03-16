@@ -28,7 +28,15 @@ class PhotosListPresenter(
         }
         val eventSink: (PhotosListEvents) -> Unit = {
             when (it) {
-                is PhotoClicked -> navigator.goTo(PhotoViewScreen(it.photo.id.id))
+                is PhotoClicked -> navigator.goTo(
+                    PhotoViewScreen(
+                        id = it.photo.id.id,
+                        authorName = it.photo.author.name,
+                        width = it.photo.size.width,
+                        height = it.photo.size.height
+                    )
+                )
+
                 PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Unit)
             }
         }

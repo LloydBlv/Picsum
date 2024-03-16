@@ -3,6 +3,7 @@ package com.example.photoview
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import com.example.domain.models.models.Size
+import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.RoborazziRule
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Rule
@@ -14,7 +15,7 @@ import org.robolectric.annotation.GraphicsMode
 
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [32])
+@Config(sdk = [32], qualifiers = RobolectricDeviceQualifiers.MediumPhone)
 class PhotoViewUiTest {
 
     @get:Rule

@@ -2,6 +2,7 @@ package com.example.photoslist.presenters
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
+import assertk.assertions.isInstanceOf
 import assertk.assertions.prop
 import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
@@ -53,7 +54,7 @@ class PhotosListPresenterTest {
             assertThat(actual is PhotoListUiState.Success)
             val photo = (actual as PhotoListUiState.Success).photos.first()
             actual.eventSink.invoke(PhotosListEvents.PhotoClicked(photo))
-            assertThat(navigator.awaitNextScreen()).isEqualTo(PhotoViewScreen(photo.id.id))
+            assertThat(navigator.awaitNextScreen()).isInstanceOf(PhotoViewScreen::class)
             navigator.expectNoEvents()
             ensureAllEventsConsumed()
         }

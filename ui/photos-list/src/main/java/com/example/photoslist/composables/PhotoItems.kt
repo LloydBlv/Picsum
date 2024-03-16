@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
@@ -39,11 +40,14 @@ internal fun PhotoItem(
     photo: UiPhoto,
     eventSink: (PhotosListEvents) -> Unit
 ) {
-    Column(
+    ListItem(
         modifier = modifier
             .clickable { eventSink(PhotosListEvents.PhotoClicked(photo)) }
-            .testTag("photo_item_$index")
-    ) {
-        Text(text = photo.fileName.value, modifier = Modifier.padding(8.dp))
-    }
+            .testTag("photo_item_$index"),
+        headlineContent = { FileNameText(photo) })
+}
+
+@Composable
+private fun FileNameText(photo: UiPhoto) {
+    Text(text = photo.fileName.value, modifier = Modifier.padding(8.dp))
 }

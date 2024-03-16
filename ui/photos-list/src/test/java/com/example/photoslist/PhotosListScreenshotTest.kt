@@ -17,6 +17,7 @@ import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.UiPhoto
 import com.example.photoslist.models.toUiPhoto
 import com.example.testing.PhotoRepositoryFake
+import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.RoborazziRule
 import com.github.takahirom.roborazzi.captureRoboImage
 import kotlinx.collections.immutable.toPersistentList
@@ -31,7 +32,7 @@ import org.robolectric.annotation.GraphicsMode
 
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [32])
+@Config(sdk = [32], qualifiers = RobolectricDeviceQualifiers.MediumPhone)
 class PhotosListScreenshotTest {
 
     @get:Rule
