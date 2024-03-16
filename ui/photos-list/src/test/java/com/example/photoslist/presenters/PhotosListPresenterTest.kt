@@ -5,7 +5,9 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.prop
 import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
+import com.example.screens.PhotosListScreen
 import com.example.testing.PhotoRepositoryFake
+import com.slack.circuit.test.FakeNavigator
 import com.slack.circuit.test.test
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
@@ -18,7 +20,7 @@ class PhotosListPresenterTest {
     @Test
     fun `initially state is loading`() = runTest {
         val getPhotosUseCase = GetPhotosUseCase(PhotoRepositoryFake())
-        val presenter = PhotosListPresenter(getPhotosUseCase)
+        val presenter = PhotosListPresenter(getPhotosUseCase, FakeNavigator(PhotosListScreen))
         presenter.test {
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual == PhotoListUiState.Loading)
@@ -29,7 +31,7 @@ class PhotosListPresenterTest {
     @Test
     fun `state is success when use case returns photos`() = runTest {
         val getPhotosUseCase = GetPhotosUseCase(PhotoRepositoryFake())
-        val presenter = PhotosListPresenter(getPhotosUseCase)
+        val presenter = PhotosListPresenter(getPhotosUseCase, FakeNavigator(PhotosListScreen))
         presenter.test {
             skipItems(1)
             val actual: PhotoListUiState = awaitItem()
@@ -44,7 +46,7 @@ class PhotosListPresenterTest {
         val socketTimeoutException = SocketTimeoutException("timeout")
         repository.exception = socketTimeoutException
         val getPhotosUseCase = GetPhotosUseCase(repository)
-        val presenter = PhotosListPresenter(getPhotosUseCase)
+        val presenter = PhotosListPresenter(getPhotosUseCase, FakeNavigator(PhotosListScreen))
         presenter.test {
             skipItems(1)
             val actual: PhotoListUiState = awaitItem()

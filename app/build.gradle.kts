@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-parcelize")
 }
 
 android {
@@ -52,6 +51,7 @@ android {
 
 dependencies {
 
+    implementation(project(":common:screens"))
     implementation(libs.circuit.backstack)
     implementation(libs.circuit.foundation)
 

@@ -1,4 +1,4 @@
-package com.example.picsum
+package com.example.screens
 
 import com.slack.circuit.runtime.screen.Screen
 import kotlinx.parcelize.Parcelize

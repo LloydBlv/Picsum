@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:screens"))
     implementation(project(":libs:domain"))
     testImplementation(project(":common:testing"))
     testImplementation(libs.assertk)

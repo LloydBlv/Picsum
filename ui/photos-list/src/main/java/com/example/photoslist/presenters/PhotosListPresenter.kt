@@ -10,12 +10,16 @@ import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.PhotosListEvents
 import com.example.photoslist.models.PhotosListEvents.PhotoClicked
 import com.example.photoslist.models.toUiPhoto
+import com.example.screens.ViewPhotoScreen
+import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
 import kotlinx.collections.immutable.toPersistentList
 
 
-class PhotosListPresenter(private val getPhotosUseCase: GetPhotosUseCase) :
-    Presenter<PhotoListUiState> {
+class PhotosListPresenter(
+    private val getPhotosUseCase: GetPhotosUseCase,
+    private val navigator: Navigator
+) : Presenter<PhotoListUiState> {
     @Composable
     override fun present(): PhotoListUiState {
         val state: Result<List<Photo>>? by getPhotosUseCase.flow.collectAsState(initial = null)
@@ -24,13 +28,8 @@ class PhotosListPresenter(private val getPhotosUseCase: GetPhotosUseCase) :
         }
         val eventSink: (PhotosListEvents) -> Unit = {
             when (it) {
-                is PhotoClicked -> {
-
-                }
-
-                PhotosListEvents.RetryClicked -> {
-
-                }
+                is PhotoClicked -> navigator.goTo(ViewPhotoScreen(it.photo.id.id))
+                PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Unit)
             }
         }
         return when {
