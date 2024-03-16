@@ -7,4 +7,8 @@ import kotlinx.parcelize.Parcelize
 data object PhotosListScreen : Screen
 
 @Parcelize
-data class ViewPhotoScreen(val id: Int) : Screen
+data class PhotoViewScreen(
+    val id: Int, val authorName: String,
+    val width: Int,
+    val height: Int
+) : Screen

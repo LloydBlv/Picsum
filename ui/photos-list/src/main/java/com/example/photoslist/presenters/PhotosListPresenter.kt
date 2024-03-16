@@ -10,7 +10,7 @@ import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.PhotosListEvents
 import com.example.photoslist.models.PhotosListEvents.PhotoClicked
 import com.example.photoslist.models.toUiPhoto
-import com.example.screens.ViewPhotoScreen
+import com.example.screens.PhotoViewScreen
 import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
 import kotlinx.collections.immutable.toPersistentList
@@ -28,7 +28,7 @@ class PhotosListPresenter(
         }
         val eventSink: (PhotosListEvents) -> Unit = {
             when (it) {
-                is PhotoClicked -> navigator.goTo(ViewPhotoScreen(it.photo.id.id))
+                is PhotoClicked -> navigator.goTo(PhotoViewScreen(it.photo.id.id))
                 PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Unit)
             }
         }

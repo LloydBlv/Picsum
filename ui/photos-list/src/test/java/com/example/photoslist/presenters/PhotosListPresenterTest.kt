@@ -7,7 +7,7 @@ import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.PhotosListEvents
 import com.example.screens.PhotosListScreen
-import com.example.screens.ViewPhotoScreen
+import com.example.screens.PhotoViewScreen
 import com.example.testing.PhotoRepositoryFake
 import com.slack.circuit.test.FakeNavigator
 import com.slack.circuit.test.test
@@ -53,7 +53,7 @@ class PhotosListPresenterTest {
             assertThat(actual is PhotoListUiState.Success)
             val photo = (actual as PhotoListUiState.Success).photos.first()
             actual.eventSink.invoke(PhotosListEvents.PhotoClicked(photo))
-            assertThat(navigator.awaitNextScreen()).isEqualTo(ViewPhotoScreen(photo.id.id))
+            assertThat(navigator.awaitNextScreen()).isEqualTo(PhotoViewScreen(photo.id.id))
             navigator.expectNoEvents()
             ensureAllEventsConsumed()
         }

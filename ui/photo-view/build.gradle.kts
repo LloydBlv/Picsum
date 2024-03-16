@@ -44,6 +44,7 @@ android {
 
 dependencies {
     implementation(project(":libs:domain"))
+    implementation(project(":common:screens"))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.material3)
     debugImplementation(libs.androidx.ui.tooling)
@@ -51,6 +52,9 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.ui.test.junit4)
     testImplementation("junit:junit:4.13.2")
+
+    implementation(libs.circuit.runtime.presenter)
+    testImplementation(libs.circuit.test)
 
     testImplementation(libs.roborazzi)
     testImplementation(libs.roborazzi.compose)
