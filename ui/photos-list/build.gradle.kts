@@ -67,7 +67,7 @@ dependencies {
 
     testImplementation(libs.androidx.ui.test.junit4)
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.11.1")
+    testImplementation(libs.robolectric)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.roborazzi)
 }
 
 android {
@@ -37,12 +38,23 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.10"
     }
+    testOptions.unitTests.isIncludeAndroidResources = true
+
 }
 
 dependencies {
     implementation(project(":libs:domain"))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.material3)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.ui.test.junit4)
+    testImplementation("junit:junit:4.13.2")
+
+    testImplementation(libs.roborazzi)
+    testImplementation(libs.roborazzi.compose)
+    testImplementation(libs.roborazzi.rule)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

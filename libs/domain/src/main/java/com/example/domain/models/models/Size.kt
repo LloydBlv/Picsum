@@ -6,4 +6,7 @@ data class Size(
 ) {
     val isLandscape: Boolean
         get() = width > height
+
+    val ratio: Float
+        get() = width.toFloat() / height
 }

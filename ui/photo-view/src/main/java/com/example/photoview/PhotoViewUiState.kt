@@ -5,5 +5,6 @@ import com.example.domain.models.models.Size
 data class PhotoViewUiState(
     val size: Size,
     val imageUrl: String,
-    val authorName: String
+    val authorName: String,
+
 )
