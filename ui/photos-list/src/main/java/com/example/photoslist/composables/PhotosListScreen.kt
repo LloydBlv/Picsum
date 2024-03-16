@@ -12,6 +12,7 @@ fun PhotosListScreen(
     modifier: Modifier = Modifier,
     state: PhotoListUiState
 ) {
+    val eventSink = state.eventSink
     AnimatedContent(
         targetState = state,
         modifier = modifier,
@@ -27,7 +28,7 @@ fun PhotosListScreen(
             }
 
             is PhotoListUiState.Success -> {
-                PhotoItems(state.photos)
+                PhotoItems(state.photos, eventSink)
             }
         }
     }

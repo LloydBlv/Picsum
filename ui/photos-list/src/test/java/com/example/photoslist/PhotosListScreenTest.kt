@@ -5,13 +5,16 @@ import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.example.domain.models.models.Author
 import com.example.domain.models.models.FileName
 import com.example.domain.models.models.Id
 import com.example.domain.models.models.Size
 import com.example.photoslist.composables.PhotosListScreen
 import com.example.photoslist.models.PhotoListUiState
+import com.example.photoslist.models.PhotosListEvents
 import com.example.photoslist.models.UiPhoto
+import com.slack.circuit.test.TestEventSink
 import kotlinx.collections.immutable.toPersistentList
 import org.junit.Rule
 import org.junit.Test
@@ -57,6 +60,47 @@ class PhotosListScreenTest {
         composeTestRule.onNodeWithTag("photo_list").assertIsDisplayed()
         composeTestRule.onNodeWithTag("photo_item_0").assertIsDisplayed()
         composeTestRule.onNodeWithTag("photo_item_1").assertIsDisplayed()
+        composeTestRule.onNodeWithTag("photo_item_2").assertDoesNotExist()
+        composeTestRule.onNodeWithTag("error").assertIsNotDisplayed()
+    }
+
+    @Test
+    fun `when state is success, photos items are clickable`() {
+        val photos = listOf(
+            UiPhoto(
+                size = Size(100, 100),
+                fileName = FileName("file1"),
+                id = Id(1),
+                author = Author(name = "author1", url = "")
+            ),
+            UiPhoto(
+                size = Size(100, 100),
+                fileName = FileName("file2"),
+                id = Id(2),
+                author = Author(name = "author2", url = "")
+            )
+        )
+        val events = TestEventSink<PhotosListEvents>()
+        composeTestRule.setContent {
+            PhotosListScreen(
+                state = PhotoListUiState.Success(
+                    photos = photos.toPersistentList(),
+                    eventSink = events
+                )
+            )
+        }
+        composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
+        composeTestRule.onNodeWithTag("photo_list").assertIsDisplayed()
+        composeTestRule.onNodeWithTag("photo_item_0").run {
+            assertIsDisplayed()
+            performClick()
+        }
+        events.assertEvents(PhotosListEvents.PhotoClicked(photos[0]))
+        composeTestRule.onNodeWithTag("photo_item_1").run {
+            assertIsDisplayed()
+            performClick()
+        }
+        events.assertEventAt(1, PhotosListEvents.PhotoClicked(photos[1]))
         composeTestRule.onNodeWithTag("photo_item_2").assertDoesNotExist()
         composeTestRule.onNodeWithTag("error").assertIsNotDisplayed()
     }

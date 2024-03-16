@@ -6,10 +6,15 @@ import kotlinx.collections.immutable.ImmutableList
 
 
 sealed interface PhotoListUiState : CircuitUiState {
-    data object Loading : PhotoListUiState
-    @Immutable
-    data class Success(val photos: ImmutableList<UiPhoto>) : PhotoListUiState
+    val eventSink: (PhotosListEvents) -> Unit
+    data object Loading : PhotoListUiState {
+        override val eventSink: (PhotosListEvents) -> Unit
+            get() = {}
+    }
 
     @Immutable
-    data class Failure(val error: Throwable?) : PhotoListUiState
+    data class Success(val photos: ImmutableList<UiPhoto>, override val eventSink: (PhotosListEvents) -> Unit = {}) : PhotoListUiState
+
+    @Immutable
+    data class Failure(val error: Throwable?, override val eventSink: (PhotosListEvents) -> Unit = {}) : PhotoListUiState
 }
