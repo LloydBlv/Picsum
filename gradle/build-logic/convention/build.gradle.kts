@@ -39,7 +39,15 @@ gradlePlugin {
         }
         register("androidApplication") {
             id = "com.picsum.android.application"
-            implementationClass = "com.example.picsum.plugins.AndroidApplicationConventionPlugin1"
+            implementationClass = "com.example.picsum.plugins.AndroidApplicationConventionPlugin"
+        }
+        register("androidApplicationCompose") {
+            id = "com.picsum.android.application.compose"
+            implementationClass = "com.example.picsum.plugins.AndroidApplicationComposeConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "com.picsum.android.library.compose"
+            implementationClass = "com.example.picsum.plugins.AndroidLibraryComposeConventionPlugin"
         }
         register("androidLibrary") {
             id = "com.picsum.android.library"

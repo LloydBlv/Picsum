@@ -1,21 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.dagger.hilt)
-    alias(libs.plugins.ksp)
+    id("com.picsum.kotlin.android")
+    id("com.picsum.android.library")
+    id("com.picsum.hilt")
 }
 
 android {
     namespace = "com.example.data"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -24,13 +14,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -41,8 +24,8 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation("com.slack.eithernet:eithernet:1.8.1")
-    testImplementation("app.cash.turbine:turbine:1.1.0")
+    implementation(libs.eithernet)
+    testImplementation(libs.turbine)
     implementation(libs.retrofit)
     api(libs.moshi)
     testImplementation(libs.mockwebserver)

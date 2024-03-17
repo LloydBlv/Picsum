@@ -5,6 +5,7 @@ circuit = "0.19.1"
 coilCompose = "2.6.0"
 converterMoshi = "2.9.0"
 dagger = "2.51"
+eithernet = "1.8.1"
 javaxInject = "1"
 kotlin = "1.9.22"
 coreKtx = "1.12.0"
@@ -29,6 +30,8 @@ hilt = "2.51"
 ksp = "1.9.22-1.0.17"
 spotless = "6.25.0"
 ktlint = "1.0.1"
+turbine = "1.1.0"
+androidxComposeCompiler = "1.5.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +50,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 coil-test = { module = "io.coil-kt:coil-test", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
+eithernet = { module = "com.slack.eithernet:eithernet", version.ref = "eithernet" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
@@ -80,6 +84,7 @@ kotlinx-coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-co
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless-gradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -91,3 +96,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+cacheFixPlugin = { id = "org.gradle.android.cache-fix", version = "3.0.1" }

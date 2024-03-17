@@ -2,6 +2,7 @@ plugins {
     id("com.picsum.kotlin.android")
     id("com.picsum.android.library")
     id("com.picsum.hilt")
+    id("com.picsum.android.library.compose")
     alias(libs.plugins.roborazzi)
 }
 
@@ -17,8 +18,6 @@ android {
         }
     }
 
-    buildFeatures.compose = true
-    composeOptions.kotlinCompilerExtensionVersion = "1.5.10"
     ksp {
         arg("circuit.codegen.mode", "hilt")
     }
@@ -27,9 +26,7 @@ android {
 dependencies {
     implementation(project(":libs:domain"))
     implementation(project(":common:screens"))
-    implementation(libs.androidx.ui)
     implementation(libs.androidx.material3)
-    debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.ui.test.junit4)
@@ -51,9 +48,6 @@ dependencies {
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.roborazzi.rule)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
