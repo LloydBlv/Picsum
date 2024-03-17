@@ -1,10 +1,9 @@
 package com.example.testing
 
+import java.io.File
 import okio.BufferedSource
 import okio.buffer
 import okio.source
-import java.io.File
-
 
 private const val BASE_DIRECTORY = "../../common/testing/src/test/resources/"
 fun loadResponse(fileName: String): BufferedSource {

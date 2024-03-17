@@ -22,7 +22,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-
 @RunWith(RobolectricTestRunner::class)
 class PhotosListScreenTest {
     @get:Rule
@@ -45,14 +44,14 @@ class PhotosListScreenTest {
                 size = Size(100, 100),
                 fileName = FileName("file1"),
                 id = Id(1),
-                author = Author(name = "author1", url = "")
+                author = Author(name = "author1", url = ""),
             ),
             UiPhoto(
                 size = Size(100, 100),
                 fileName = FileName("file2"),
                 id = Id(2),
-                author = Author(name = "author2", url = "")
-            )
+                author = Author(name = "author2", url = ""),
+            ),
         )
         composeTestRule.setContent {
             PhotosListScreen(state = PhotoListUiState.Success(photos.toPersistentList()))
@@ -72,22 +71,22 @@ class PhotosListScreenTest {
                 size = Size(100, 100),
                 fileName = FileName("file1"),
                 id = Id(1),
-                author = Author(name = "author1", url = "")
+                author = Author(name = "author1", url = ""),
             ),
             UiPhoto(
                 size = Size(100, 100),
                 fileName = FileName("file2"),
                 id = Id(2),
-                author = Author(name = "author2", url = "")
-            )
+                author = Author(name = "author2", url = ""),
+            ),
         )
         val events = TestEventSink<PhotosListEvents>()
         composeTestRule.setContent {
             PhotosListScreen(
                 state = PhotoListUiState.Success(
                     photos = photos.toPersistentList(),
-                    eventSink = events
-                )
+                    eventSink = events,
+                ),
             )
         }
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()

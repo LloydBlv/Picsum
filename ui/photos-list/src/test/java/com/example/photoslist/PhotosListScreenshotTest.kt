@@ -29,7 +29,6 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
-
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [32], qualifiers = RobolectricDeviceQualifiers.MediumPhone)
@@ -53,7 +52,7 @@ class PhotosListScreenshotTest {
         composeRule.setContent {
             PhotosListScreen(
                 state = PhotoListUiState.Loading,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
             )
         }
         composeRule.mainClock.advanceTimeBy(500)
@@ -69,7 +68,7 @@ class PhotosListScreenshotTest {
         composeRule.setContent {
             PhotosListScreen(
                 state = PhotoListUiState.Success(photos),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
             )
         }
         captureRoot()
@@ -80,7 +79,7 @@ class PhotosListScreenshotTest {
         composeRule.setContent {
             PhotosListScreenContent(
                 state = PhotoListUiState.Failure(Throwable("Failed")),
-                eventSink = {}
+                eventSink = {},
             )
         }
         captureRoot()
@@ -92,12 +91,15 @@ class PhotosListScreenshotTest {
             size = Size(100, 100),
             fileName = FileName("File name test 1234.jpg"),
             id = Id(0),
-            author = Author("Test", "Test")
+            author = Author("Test", "Test"),
         )
         composeRule.setContent {
             PhotoItem(
                 modifier = Modifier.wrapContentSize(),
-                index = 0, photo = testUiPhoto, eventSink = {})
+                index = 0,
+                photo = testUiPhoto,
+                eventSink = {},
+            )
         }
         captureRoot()
     }
@@ -105,5 +107,4 @@ class PhotosListScreenshotTest {
     private fun captureRoot() {
         composeRule.onRoot().captureRoboImage()
     }
-
 }

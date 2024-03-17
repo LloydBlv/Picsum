@@ -62,8 +62,8 @@ class PhotoViewUiTest {
                     size = Size(width = 5000, height = 3333),
                     imageUrl = "https://example.com/image.jpg",
                     authorName = "author1",
-                    eventSink = {}
-                )
+                    eventSink = {},
+                ),
             )
         }
         composeTestRule.onRoot().captureRoboImage()
@@ -77,8 +77,8 @@ class PhotoViewUiTest {
                     size = Size(width = 3887, height = 4899),
                     imageUrl = "https://example.com/image.jpg",
                     authorName = "author1",
-                    eventSink = {}
-                )
+                    eventSink = {},
+                ),
             )
         }
         composeTestRule.onRoot().captureRoboImage()

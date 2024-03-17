@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 
 class PhotoViewPresenter @AssistedInject constructor(
     @Assisted private val screen: PhotoViewScreen,
-    @Assisted private val navigator: Navigator
+    @Assisted private val navigator: Navigator,
 ) : Presenter<PhotoViewUiState> {
     @Composable
     override fun present(): PhotoViewUiState {
@@ -26,7 +26,7 @@ class PhotoViewPresenter @AssistedInject constructor(
             size = Size(screen.width, screen.height),
             imageUrl = createImageUrl(screen.width, screen.height, screen.id),
             authorName = screen.authorName,
-            eventSink = ::eventSink
+            eventSink = ::eventSink,
         )
     }
 

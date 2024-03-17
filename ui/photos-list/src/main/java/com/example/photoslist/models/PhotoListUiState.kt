@@ -4,7 +4,6 @@ import androidx.compose.runtime.Immutable
 import com.slack.circuit.runtime.CircuitUiState
 import kotlinx.collections.immutable.ImmutableList
 
-
 sealed interface PhotoListUiState : CircuitUiState {
     val eventSink: (PhotosListEvents) -> Unit
     data object Loading : PhotoListUiState {

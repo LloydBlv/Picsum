@@ -14,7 +14,6 @@ internal fun BoxScope.LoadingScreen(modifier: Modifier = Modifier) {
     CircularProgressIndicator(
         modifier.size(32.dp)
             .align(Alignment.Center)
-            .testTag("loading")
+            .testTag("loading"),
     )
-
 }

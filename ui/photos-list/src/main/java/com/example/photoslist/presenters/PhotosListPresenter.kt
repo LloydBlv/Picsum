@@ -12,17 +12,17 @@ import com.example.photoslist.models.toUiPhoto
 import com.example.screens.PhotoViewScreen
 import com.example.screens.PhotosListScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
+import com.slack.circuit.retained.collectAsRetainedState
 import com.slack.circuit.runtime.Navigator
 import com.slack.circuit.runtime.presenter.Presenter
-import kotlinx.collections.immutable.toPersistentList
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.components.SingletonComponent
-import com.slack.circuit.retained.collectAsRetainedState
+import kotlinx.collections.immutable.toPersistentList
 class PhotosListPresenter @AssistedInject constructor(
     private val getPhotosUseCase: GetPhotosUseCase,
-    @Assisted private val navigator: Navigator
+    @Assisted private val navigator: Navigator,
 ) : Presenter<PhotoListUiState> {
     @Composable
     override fun present(): PhotoListUiState {
@@ -37,8 +37,8 @@ class PhotosListPresenter @AssistedInject constructor(
                         id = it.photo.id.id,
                         authorName = it.photo.author.name,
                         width = it.photo.size.width,
-                        height = it.photo.size.height
-                    )
+                        height = it.photo.size.height,
+                    ),
                 )
 
                 PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Unit)
@@ -47,12 +47,12 @@ class PhotosListPresenter @AssistedInject constructor(
         return when {
             state?.isSuccess == true -> PhotoListUiState.Success(
                 photos = state!!.getOrNull()?.map(Photo::toUiPhoto).orEmpty().toPersistentList(),
-                eventSink = eventSink
+                eventSink = eventSink,
             )
 
             state?.isFailure == true -> PhotoListUiState.Failure(
                 error = state?.exceptionOrNull(),
-                eventSink = eventSink
+                eventSink = eventSink,
             )
 
             else -> PhotoListUiState.Loading

@@ -11,10 +11,11 @@ import com.squareup.moshi.Types
 import java.lang.reflect.Type
 
 class PhotoRepositoryFake(
-    private val moshi: Moshi = Moshi.Builder().build()
-): PhotoRepository {
+    private val moshi: Moshi = Moshi.Builder().build(),
+) : PhotoRepository {
 
     var exception: Throwable? = null
+
     @SuppressLint("VisibleForTests")
     override suspend fun getPhotos(): Result<List<Photo>> {
         if (exception != null) {

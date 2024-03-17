@@ -17,11 +17,12 @@ internal fun DetailTopBar(onBackPressed: () -> Unit) {
             IconButton(onClick = onBackPressed) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                    contentDescription = "Back"
+                    contentDescription = "Back",
                 )
             }
         },
         title = {
             Text(text = "Photo View")
-        })
+        },
+    )
 }

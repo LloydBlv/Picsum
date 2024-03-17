@@ -7,16 +7,16 @@ import assertk.assertions.prop
 import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.PhotosListEvents
-import com.example.screens.PhotosListScreen
 import com.example.screens.PhotoViewScreen
+import com.example.screens.PhotosListScreen
 import com.example.testing.PhotoRepositoryFake
 import com.slack.circuit.test.FakeNavigator
 import com.slack.circuit.test.test
+import java.net.SocketTimeoutException
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import java.net.SocketTimeoutException
 
 @RunWith(RobolectricTestRunner::class)
 class PhotosListPresenterTest {

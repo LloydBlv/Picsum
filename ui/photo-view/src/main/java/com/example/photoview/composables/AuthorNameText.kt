@@ -13,6 +13,6 @@ internal fun AuthorNameText(authorName: String, modifier: Modifier = Modifier) {
     Text(
         text = authorName,
         modifier = modifier.fillMaxWidth().padding(16.dp),
-        style = MaterialTheme.typography.titleLarge
+        style = MaterialTheme.typography.titleLarge,
     )
 }

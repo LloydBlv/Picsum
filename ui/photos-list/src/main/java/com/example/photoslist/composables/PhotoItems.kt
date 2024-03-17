@@ -24,7 +24,7 @@ internal fun BoxScope.PhotoItems(photos: List<UiPhoto>, eventSink: (PhotosListEv
         state = state,
         modifier = Modifier
             .fillMaxSize()
-            .testTag("photo_list")
+            .testTag("photo_list"),
     ) {
         itemsIndexed(photos) { index, photo ->
             PhotoItem(index = index, photo = photo, eventSink = eventSink)
@@ -40,13 +40,14 @@ internal fun PhotoItem(
     modifier: Modifier = Modifier,
     index: Int,
     photo: UiPhoto,
-    eventSink: (PhotosListEvents) -> Unit
+    eventSink: (PhotosListEvents) -> Unit,
 ) {
     ListItem(
         modifier = modifier
             .clickable { eventSink(PhotosListEvents.PhotoClicked(photo)) }
             .testTag("photo_item_$index"),
-        headlineContent = { FileNameText(photo) })
+        headlineContent = { FileNameText(photo) },
+    )
 }
 
 @Composable

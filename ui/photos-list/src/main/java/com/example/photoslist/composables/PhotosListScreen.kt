@@ -18,7 +18,7 @@ import dagger.hilt.components.SingletonComponent
 @Composable
 fun PhotosListScreen(
     modifier: Modifier = Modifier,
-    state: PhotoListUiState
+    state: PhotoListUiState,
 ) {
     val eventSink = state.eventSink
     Scaffold(
@@ -27,7 +27,7 @@ fun PhotosListScreen(
         PhotosListScreenContent(
             modifier = Modifier.padding(it),
             state = state,
-            eventSink = eventSink
+            eventSink = eventSink,
         )
     }
 }
@@ -36,7 +36,7 @@ fun PhotosListScreen(
 internal fun PhotosListScreenContent(
     modifier: Modifier = Modifier,
     state: PhotoListUiState,
-    eventSink: (PhotosListEvents) -> Unit
+    eventSink: (PhotosListEvents) -> Unit,
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         when (state) {
@@ -58,5 +58,3 @@ internal fun PhotosListScreenContent(
         }
     }
 }
-
-

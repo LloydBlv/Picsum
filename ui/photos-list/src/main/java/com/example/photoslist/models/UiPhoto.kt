@@ -12,7 +12,7 @@ data class UiPhoto(
     val size: Size,
     val fileName: FileName,
     val id: Id,
-    val author: Author
+    val author: Author,
 )
 
 fun Photo.toUiPhoto(): UiPhoto {
@@ -20,5 +20,6 @@ fun Photo.toUiPhoto(): UiPhoto {
         size = size,
         fileName = fileName,
         id = id,
-        author = author)
+        author = author,
+    )
 }

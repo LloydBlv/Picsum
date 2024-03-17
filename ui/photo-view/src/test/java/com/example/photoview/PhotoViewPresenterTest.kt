@@ -14,7 +14,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
-
 @RunWith(RobolectricTestRunner::class)
 class PhotoViewPresenterTest {
     @Test
@@ -23,12 +22,12 @@ class PhotoViewPresenterTest {
             id = 1,
             authorName = "John Doe",
             width = 123,
-            height = 456
+            height = 456,
         )
         val navigator = FakeNavigator(screen)
         val presenter = PhotoViewPresenter(
             screen = screen,
-            navigator
+            navigator,
         )
         presenter.test {
             assertThat(awaitItem()).all {
@@ -45,12 +44,12 @@ class PhotoViewPresenterTest {
             id = 1,
             authorName = "John Doe",
             width = 123,
-            height = 456
+            height = 456,
         )
         val navigator = FakeNavigator(PhotosListScreen)
         val presenter = PhotoViewPresenter(
             screen = screen,
-            navigator = navigator
+            navigator = navigator,
         )
         presenter.test {
             val state = awaitItem()

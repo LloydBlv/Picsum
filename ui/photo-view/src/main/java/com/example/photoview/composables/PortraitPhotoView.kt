@@ -13,7 +13,7 @@ internal fun PortraitPhotoView(state: PhotoViewUiState, modifier: Modifier, imag
             url = imageUrl,
             modifier = Modifier
                 .weight(0.8f)
-                .fillMaxSize()
+                .fillMaxSize(),
         )
         AuthorNameText(state.authorName, modifier = Modifier.weight(0.2f))
     }

@@ -9,11 +9,11 @@ import com.example.photoview.R
 @Composable
 internal fun PicsumImage(
     url: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     AsyncImage(
         modifier = modifier,
         model = url,
-        contentDescription = stringResource(id = R.string.picsumimage)
+        contentDescription = stringResource(id = R.string.picsumimage),
     )
 }

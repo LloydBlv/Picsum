@@ -13,13 +13,13 @@ import com.example.photoview.PhotoViewUiState
 internal fun LandscapePhotoView(state: PhotoViewUiState, modifier: Modifier, imageUrl: String) {
     Column(
         modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         PicsumImage(
             url = imageUrl,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(state.size.ratio)
+                .aspectRatio(state.size.ratio),
         )
         AuthorNameText(state.authorName)
     }

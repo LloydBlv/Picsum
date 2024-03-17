@@ -13,21 +13,19 @@ import com.example.screens.PhotoViewScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
 import dagger.hilt.components.SingletonComponent
 
-
 @Composable
 @CircuitInject(PhotoViewScreen::class, SingletonComponent::class)
 internal fun PhotoViewScreen(
     modifier: Modifier = Modifier,
-    state: PhotoViewUiState
+    state: PhotoViewUiState,
 ) {
     val eventSink = state.eventSink
     Scaffold(
         modifier = modifier,
-        topBar = { DetailTopBar(onBackPressed = { eventSink.invoke(PhotoViewEvents.OnBackPressed) }) }
+        topBar = { DetailTopBar(onBackPressed = { eventSink.invoke(PhotoViewEvents.OnBackPressed) }) },
     ) {
         PhotoViewContent(state = state, modifier = Modifier.padding(it))
     }
-
 }
 
 @Composable
@@ -38,4 +36,3 @@ private fun PhotoViewContent(state: PhotoViewUiState, modifier: Modifier) {
         PortraitPhotoView(state = state, modifier = modifier, imageUrl = state.imageUrl)
     }
 }
-

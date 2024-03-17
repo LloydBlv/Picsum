@@ -7,6 +7,7 @@ import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.testing.TestData
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
+import java.net.HttpURLConnection
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -16,7 +17,6 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.net.HttpURLConnection
 
 class GetPhotosUseCaseTest {
 
@@ -35,10 +35,12 @@ class GetPhotosUseCaseTest {
             .build()
             .create(PhotoService::class.java)
     }
+
     @After
     fun teardown() {
         mockWebServer.shutdown()
     }
+
     @Test
     fun testGetPhotos() = runTest {
         val response = MockResponse()

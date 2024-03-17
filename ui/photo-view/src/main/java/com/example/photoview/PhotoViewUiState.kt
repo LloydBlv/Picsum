@@ -10,9 +10,8 @@ data class PhotoViewUiState(
     val authorName: String,
     val eventSink: (PhotoViewEvents) -> Unit,
 
-): CircuitUiState
+) : CircuitUiState
 
-
-sealed interface PhotoViewEvents: CircuitUiEvent {
-    data object OnBackPressed: PhotoViewEvents
+sealed interface PhotoViewEvents : CircuitUiEvent {
+    data object OnBackPressed : PhotoViewEvents
 }
