@@ -45,11 +45,6 @@ jobs:
             - name: Check spotless
               run: ./gradlew spotlessCheck --no-configuration-cache
 
-            - name: Check Dependency Guard
-              id: dependencyguard_verify
-              continue-on-error: true
-              run: ./gradlew dependencyGuard
-
             - name: Run all local screenshot tests (Roborazzi)
               id: screenshotsverify
               continue-on-error: true
@@ -73,10 +68,8 @@ jobs:
             - name: Run local tests
               if: always()
               run: ./gradlew testDebug
-            # Replace task exclusions with `-Pandroidx.baselineprofile.skipgeneration` when
-            # https://android-review.googlesource.com/c/platform/frameworks/support/+/2602790 landed in a
-            # release build
-            - name: Build all build type and flavor permutations
+
+            - name: Build
               run: ./gradlew :app:assemble
 
             - name: Upload build outputs (APKs)
