@@ -53,6 +53,7 @@ android {
 
 dependencies {
     runtimeOnly(project(":ui:photos-list"))
+    runtimeOnly(project(":ui:photo-view"))
     implementation(project(":common:screens"))
     implementation(libs.circuit.backstack)
     implementation(libs.circuit.foundation)

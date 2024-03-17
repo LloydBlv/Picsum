@@ -2,7 +2,6 @@ package com.example.photoslist.presenters
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.domain.models.models.Photo
 import com.example.domain.models.usecases.GetPhotosUseCase
@@ -20,14 +19,14 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.components.SingletonComponent
-
+import com.slack.circuit.retained.collectAsRetainedState
 class PhotosListPresenter @AssistedInject constructor(
     private val getPhotosUseCase: GetPhotosUseCase,
     @Assisted private val navigator: Navigator
 ) : Presenter<PhotoListUiState> {
     @Composable
     override fun present(): PhotoListUiState {
-        val state: Result<List<Photo>>? by getPhotosUseCase.flow.collectAsState(initial = null)
+        val state: Result<List<Photo>>? by getPhotosUseCase.flow.collectAsRetainedState(initial = null)
         LaunchedEffect(key1 = Unit) {
             getPhotosUseCase.invoke(Unit)
         }

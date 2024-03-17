@@ -7,17 +7,24 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.photoview.PhotoViewEvents
 import com.example.photoview.PhotoViewUiState
+import com.example.screens.PhotoViewScreen
+import com.slack.circuit.codegen.annotations.CircuitInject
+import dagger.hilt.components.SingletonComponent
 
 
 @Composable
+@CircuitInject(PhotoViewScreen::class, SingletonComponent::class)
 internal fun PhotoViewScreen(
     modifier: Modifier = Modifier,
     state: PhotoViewUiState
 ) {
-    Scaffold(topBar = {
-        DetailTopBar(onBackPressed = {})
-    }) {
+    val eventSink = state.eventSink
+    Scaffold(
+        modifier = modifier,
+        topBar = { DetailTopBar(onBackPressed = { eventSink.invoke(PhotoViewEvents.OnBackPressed) }) }
+    ) {
         PhotoViewContent(state = state, modifier = Modifier.padding(it))
     }
 

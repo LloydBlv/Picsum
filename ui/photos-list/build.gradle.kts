@@ -61,6 +61,7 @@ dependencies {
 
     implementation(libs.circuit.runtime.presenter)
     implementation(libs.circuit.runtime.ui)
+    implementation(libs.circuit.retained)
     testImplementation(libs.circuit.test)
     api(libs.circuit.codegen.annotations)
     ksp(libs.circuit.codegen)

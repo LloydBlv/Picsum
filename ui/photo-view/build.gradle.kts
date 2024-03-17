@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.roborazzi)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -40,6 +42,9 @@ android {
     }
     testOptions.unitTests.isIncludeAndroidResources = true
 
+    ksp {
+        arg("circuit.codegen.mode", "hilt")
+    }
 }
 
 dependencies {
@@ -57,8 +62,15 @@ dependencies {
     implementation(libs.coil.compose)
     testImplementation(libs.coil.test)
 
+    implementation(libs.dagger)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
     implementation(libs.circuit.runtime.presenter)
+    implementation(libs.circuit.runtime.ui)
     testImplementation(libs.circuit.test)
+    api(libs.circuit.codegen.annotations)
+    ksp(libs.circuit.codegen)
 
     testImplementation(libs.roborazzi)
     testImplementation(libs.roborazzi.compose)
