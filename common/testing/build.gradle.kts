@@ -1,19 +1,10 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.picsum.kotlin.android")
+    id("com.picsum.android.library")
 }
 
 android {
     namespace = "com.example.testing"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -22,13 +13,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 

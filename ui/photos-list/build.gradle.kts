@@ -1,22 +1,12 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.picsum.kotlin.android")
+    id("com.picsum.android.library")
+    id("com.picsum.hilt")
     alias(libs.plugins.roborazzi)
-    alias(libs.plugins.dagger.hilt)
-    alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "com.example.photoslist"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -26,21 +16,8 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
-    }
-    testOptions.unitTests.isIncludeAndroidResources = true
-
+    buildFeatures.compose = true
+    composeOptions.kotlinCompilerExtensionVersion = "1.5.10"
     ksp {
         arg("circuit.codegen.mode", "hilt")
     }
@@ -52,8 +29,6 @@ dependencies {
     runtimeOnly(project(":libs:data"))
 
     implementation(libs.dagger)
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
 
     testImplementation(project(":common:testing"))
     testImplementation(libs.assertk)
