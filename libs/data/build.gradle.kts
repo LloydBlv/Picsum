@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp").version("1.9.22-1.0.17")
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -36,6 +37,10 @@ android {
 dependencies {
     implementation(project(":libs:domain"))
     testImplementation(project(":common:testing"))
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
     implementation("com.slack.eithernet:eithernet:1.8.1")
     testImplementation("app.cash.turbine:turbine:1.1.0")
     implementation(libs.retrofit)

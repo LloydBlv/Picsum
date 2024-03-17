@@ -4,6 +4,8 @@ assertk = "0.28.0"
 circuit = "0.19.1"
 coilCompose = "2.6.0"
 converterMoshi = "2.9.0"
+hiltAndroid = "2.51"
+hiltAndroidCompiler = "2.51"
 kotlin = "1.9.22"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -23,6 +25,8 @@ moshiKotlinCodegen = "1.15.1"
 retrofit = "2.9.0"
 robolectric = "4.11.1"
 roborazzi = "1.10.1"
+hilt = "2.51"
+ksp = "1.9.22-1.0.17"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +40,8 @@ circuit-backstack = { module = "com.slack.circuit:circuit-backstack", version.re
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 coil-test = { module = "io.coil-kt:coil-test", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -66,4 +72,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
