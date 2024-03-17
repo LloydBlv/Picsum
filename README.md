@@ -55,6 +55,14 @@ The modular design is captured in the following module dependency graph:
 
 ![Module Dependency Graph](screenshots/modules-graph.png)
 
+## Contribution and Workflow Strategy
+
+For the initial development phase and to save time, all code has been directly pushed to the `main` branch of this repository. However, in a typical team scenario, I adhere to a pull request (PR) based workflow. Each new feature, fix, or improvement is worked on in a separate branch and then merged into `main` via a pull request, allowing for code review and discussion.
+
+For an example of how a PR process looks, check out this merged [PR #1](https://github.com/LloydBlv/Picsum/pull/1).
+
+This workflow ensures maintainability and quality of code when working collaboratively in a team environment, and is a practice I strongly advocate for scalable and professional development.
+
 ## Setup and Running 📲
 
 ### Prerequisites
