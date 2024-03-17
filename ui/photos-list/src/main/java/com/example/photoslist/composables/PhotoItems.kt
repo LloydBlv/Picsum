@@ -17,9 +17,10 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.photoslist.models.PhotosListEvents
 import com.example.photoslist.models.UiPhoto
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
-internal fun BoxScope.PhotoItems(photos: List<UiPhoto>, eventSink: (PhotosListEvents) -> Unit) {
+internal fun BoxScope.PhotoItems(photos: ImmutableList<UiPhoto>, eventSink: (PhotosListEvents) -> Unit) {
     val state = rememberLazyListState()
     LazyColumn(
         state = state,

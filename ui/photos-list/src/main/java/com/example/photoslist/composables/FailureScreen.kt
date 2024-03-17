@@ -21,7 +21,7 @@ import com.example.photoslist.models.PhotosListEvents
 
 @Composable
 internal fun BoxScope.FailureScreen(
-    error: Throwable?,
+    error: String,
     modifier: Modifier = Modifier,
     eventSink: (PhotosListEvents) -> Unit
 ) {
@@ -33,7 +33,7 @@ internal fun BoxScope.FailureScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "${error?.message}",
+            text = error,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
         )

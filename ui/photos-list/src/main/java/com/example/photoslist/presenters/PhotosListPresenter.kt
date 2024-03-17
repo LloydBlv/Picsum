@@ -41,7 +41,7 @@ class PhotosListPresenter @AssistedInject constructor(
                     ),
                 )
 
-                PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Unit)
+                PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Any())
             }
         }
         return when {
@@ -51,7 +51,7 @@ class PhotosListPresenter @AssistedInject constructor(
             )
 
             state?.isFailure == true -> PhotoListUiState.Failure(
-                error = state?.exceptionOrNull(),
+                error = state?.exceptionOrNull()?.localizedMessage ?: "Something went wrong",
                 eventSink = eventSink,
             )
 

@@ -15,5 +15,5 @@ sealed interface PhotoListUiState : CircuitUiState {
     data class Success(val photos: ImmutableList<UiPhoto>, override val eventSink: (PhotosListEvents) -> Unit = {}) : PhotoListUiState
 
     @Immutable
-    data class Failure(val error: Throwable?, override val eventSink: (PhotosListEvents) -> Unit = {}) : PhotoListUiState
+    data class Failure(val error: String, override val eventSink: (PhotosListEvents) -> Unit = {}) : PhotoListUiState
 }
