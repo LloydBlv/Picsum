@@ -1,5 +1,5 @@
 # Picsum App 🖼️
-
+[![Build](https://github.com/LloydBlv/Picsum/actions/workflows/Build.yaml/badge.svg)](https://github.com/LloydBlv/Picsum/actions/workflows/Build.yaml)
 ## Overview 🌐
 
 Picsum is an Android application that not only showcases the integration of contemporary technologies and best practices in app development as of March 2024 but also exemplifies the meticulous application of Clean Code principles and SOLID design. By adhering to these methodologies, the Picsum app ensures code quality, maintainability, and scalability. It features a clean and intuitive interface built with Jetpack Compose, providing users access to a vast collection of images sourced from the Picsum Photos API.
@@ -33,7 +33,7 @@ Here are various screenshots demonstrating the app's functionality and UI states
 
 <p float="left">
   <img src="screenshots/photos_list.jpg" alt="Photos List View" width="200" />
-  <img src="screenshots/portrait_photo_view.jpg" alt="Portrait Photo View" width="200" /> 
+  <img src="screenshots/portrait_photo_view.jpg" alt="Portrait Photo View" width="200" />
   <img src="screenshots/landscape_photo_view.jpg" alt="Landscape Photo View" width="200" />
   <img src="screenshots/loading.jpeg" alt="Loading State" width="200" />
   <img src="screenshots/failed_state.jpeg" alt="Failed State" width="200" />
