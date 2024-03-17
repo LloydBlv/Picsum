@@ -1,9 +1,10 @@
 package com.example.photoslist.composables
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.photoslist.models.PhotoListUiState
@@ -20,23 +21,24 @@ fun PhotosListScreen(
     state: PhotoListUiState
 ) {
     val eventSink = state.eventSink
-    AnimatedContent(
-        targetState = state,
+    Scaffold(
         modifier = modifier,
-        label = "PhotosListScreen"
     ) {
-        PhotosListScreenContent(state, eventSink)
+        PhotosListScreenContent(
+            modifier = Modifier.padding(it),
+            state = state,
+            eventSink = eventSink
+        )
     }
-
-
 }
 
 @Composable
 internal fun PhotosListScreenContent(
+    modifier: Modifier = Modifier,
     state: PhotoListUiState,
     eventSink: (PhotosListEvents) -> Unit
 ) {
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()) {
         when (state) {
             is PhotoListUiState.Failure -> {
                 FailureScreen(

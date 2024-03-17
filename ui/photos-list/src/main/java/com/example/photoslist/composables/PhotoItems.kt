@@ -2,11 +2,11 @@ package com.example.photoslist.composables
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -19,7 +19,9 @@ import com.example.photoslist.models.UiPhoto
 
 @Composable
 internal fun BoxScope.PhotoItems(photos: List<UiPhoto>, eventSink: (PhotosListEvents) -> Unit) {
+    val state = rememberLazyListState()
     LazyColumn(
+        state = state,
         modifier = Modifier
             .fillMaxSize()
             .testTag("photo_list")
