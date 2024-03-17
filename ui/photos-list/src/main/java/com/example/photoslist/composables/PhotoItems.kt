@@ -37,10 +37,10 @@ internal fun BoxScope.PhotoItems(photos: List<UiPhoto>, eventSink: (PhotosListEv
 
 @Composable
 internal fun PhotoItem(
-    modifier: Modifier = Modifier,
     index: Int,
     photo: UiPhoto,
-    eventSink: (PhotosListEvents) -> Unit,
+    modifier: Modifier = Modifier,
+    eventSink: (PhotosListEvents) -> Unit
 ) {
     ListItem(
         modifier = modifier

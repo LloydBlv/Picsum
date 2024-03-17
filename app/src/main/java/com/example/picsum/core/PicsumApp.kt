@@ -26,10 +26,12 @@ class PicsumApp : Application() {
                 .detectLeakedClosableObjects()
                 .detectLeakedRegistrationObjects()
                 .detectFileUriExposure()
-                .detectCleartextNetwork()
                 .apply {
                     if (Build.VERSION.SDK_INT >= 26) {
                         detectContentUriWithoutPermission()
+                    }
+                    if (Build.VERSION.SDK_INT >= 23) {
+                        detectCleartextNetwork()
                     }
                     if (Build.VERSION.SDK_INT >= 29) {
                         detectCredentialProtectedWhileLocked()

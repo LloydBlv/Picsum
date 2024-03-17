@@ -7,7 +7,11 @@ import androidx.compose.ui.Modifier
 import com.example.photoview.PhotoViewUiState
 
 @Composable
-internal fun PortraitPhotoView(state: PhotoViewUiState, modifier: Modifier, imageUrl: String) {
+internal fun PortraitPhotoView(
+    state: PhotoViewUiState,
+    imageUrl: String,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier) {
         PicsumImage(
             url = imageUrl,

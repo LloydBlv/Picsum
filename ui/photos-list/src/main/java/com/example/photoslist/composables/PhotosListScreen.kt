@@ -16,10 +16,7 @@ import dagger.hilt.components.SingletonComponent
 @SuppressLint("UnusedContentLambdaTargetStateParameter")
 @CircuitInject(PhotosListScreen::class, SingletonComponent::class)
 @Composable
-fun PhotosListScreen(
-    modifier: Modifier = Modifier,
-    state: PhotoListUiState,
-) {
+fun PhotosListScreen(state: PhotoListUiState, modifier: Modifier = Modifier) {
     val eventSink = state.eventSink
     Scaffold(
         modifier = modifier,
@@ -34,9 +31,9 @@ fun PhotosListScreen(
 
 @Composable
 internal fun PhotosListScreenContent(
-    modifier: Modifier = Modifier,
     state: PhotoListUiState,
-    eventSink: (PhotosListEvents) -> Unit,
+    modifier: Modifier = Modifier,
+    eventSink: (PhotosListEvents) -> Unit
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         when (state) {

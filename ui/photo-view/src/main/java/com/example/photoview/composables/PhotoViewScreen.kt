@@ -15,10 +15,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Composable
 @CircuitInject(PhotoViewScreen::class, SingletonComponent::class)
-internal fun PhotoViewScreen(
-    modifier: Modifier = Modifier,
-    state: PhotoViewUiState,
-) {
+internal fun PhotoViewScreen(state: PhotoViewUiState, modifier: Modifier = Modifier) {
     val eventSink = state.eventSink
     Scaffold(
         modifier = modifier,
@@ -29,7 +26,7 @@ internal fun PhotoViewScreen(
 }
 
 @Composable
-private fun PhotoViewContent(state: PhotoViewUiState, modifier: Modifier) {
+private fun PhotoViewContent(state: PhotoViewUiState, modifier: Modifier = Modifier) {
     if (state.size.isLandscape) {
         LandscapePhotoView(state = state, modifier = modifier, imageUrl = state.imageUrl)
     } else {

@@ -10,7 +10,11 @@ import androidx.compose.ui.Modifier
 import com.example.photoview.PhotoViewUiState
 
 @Composable
-internal fun LandscapePhotoView(state: PhotoViewUiState, modifier: Modifier, imageUrl: String) {
+internal fun LandscapePhotoView(
+    state: PhotoViewUiState,
+    imageUrl: String,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

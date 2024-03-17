@@ -19,9 +19,9 @@ import com.example.photoslist.models.PhotosListEvents
 
 @Composable
 internal fun BoxScope.FailureScreen(
-    modifier: Modifier = Modifier,
     error: Throwable?,
-    eventSink: (PhotosListEvents) -> Unit,
+    modifier: Modifier = Modifier,
+    eventSink: (PhotosListEvents) -> Unit
 ) {
     Column(
         modifier = modifier
