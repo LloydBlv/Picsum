@@ -5,8 +5,9 @@ import com.example.domain.models.models.Photo
 import com.example.domain.models.repositories.PhotoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetPhotosUseCase(private val repository: PhotoRepository) :
+class GetPhotosUseCase @Inject constructor(private val repository: PhotoRepository) :
     SubjectInteractor<Unit, Result<List<Photo>>>() {
 
     override fun createObservable(params: Unit): Flow<Result<List<Photo>>> {
