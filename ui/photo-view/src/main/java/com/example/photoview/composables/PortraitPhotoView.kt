@@ -2,6 +2,7 @@ package com.example.photoview.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.photoview.PhotoViewUiState
@@ -17,6 +18,7 @@ internal fun PortraitPhotoView(
             url = imageUrl,
             modifier = Modifier
                 .weight(0.8f)
+                .fillMaxWidth()
                 .fillMaxSize(),
         )
         AuthorNameText(state.authorName, modifier = Modifier.weight(0.2f))
