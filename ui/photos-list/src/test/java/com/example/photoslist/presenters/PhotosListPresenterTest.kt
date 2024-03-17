@@ -72,7 +72,7 @@ class PhotosListPresenterTest {
             val actual: PhotoListUiState = awaitItem()
             assertThat(actual is PhotoListUiState.Failure)
             assertThat(actual).transform { it as PhotoListUiState.Failure }
-                .prop(PhotoListUiState.Failure::error).isEqualTo(socketTimeoutException)
+                .prop(PhotoListUiState.Failure::error).isEqualTo("timeout")
             ensureAllEventsConsumed()
         }
     }

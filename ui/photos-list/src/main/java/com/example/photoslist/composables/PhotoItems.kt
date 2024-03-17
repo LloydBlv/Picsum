@@ -32,7 +32,7 @@ internal fun BoxScope.PhotoItems(photos: ImmutableList<UiPhoto>, eventSink: (Pho
             PhotoItem(index = index, photo = photo, eventSink = eventSink)
             if (index != photos.lastIndex) {
                 VerticalDivider(
-                    color = Color.DarkGray.copy(alpha = 0.5f)
+                    color = Color.DarkGray.copy(alpha = 0.5f),
                 )
             }
         }
@@ -44,7 +44,7 @@ internal fun PhotoItem(
     index: Int,
     photo: UiPhoto,
     modifier: Modifier = Modifier,
-    eventSink: (PhotosListEvents) -> Unit
+    eventSink: (PhotosListEvents) -> Unit,
 ) {
     ListItem(
         modifier = modifier

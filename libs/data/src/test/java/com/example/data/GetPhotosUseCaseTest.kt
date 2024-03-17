@@ -8,6 +8,7 @@ import com.example.testing.TestData
 import com.slack.eithernet.ApiResultCallAdapterFactory
 import com.slack.eithernet.ApiResultConverterFactory
 import java.net.HttpURLConnection
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
@@ -47,7 +48,7 @@ class GetPhotosUseCaseTest {
             .setResponseCode(HttpURLConnection.HTTP_OK)
             .setBody(TestData.getTestResponseString())
         mockWebServer.enqueue(response)
-        val repository = PhotoRepositoryDefault(photoService)
+        val repository = PhotoRepositoryDefault(photoService, UnconfinedTestDispatcher())
         val getPhotosUseCase = GetPhotosUseCase(repository)
 
         getPhotosUseCase.invoke(Unit)

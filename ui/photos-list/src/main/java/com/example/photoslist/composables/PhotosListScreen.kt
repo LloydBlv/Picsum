@@ -48,7 +48,7 @@ private fun PhotosListTopBar() {
 internal fun PhotosListScreenContent(
     state: PhotoListUiState,
     modifier: Modifier = Modifier,
-    eventSink: (PhotosListEvents) -> Unit
+    eventSink: (PhotosListEvents) -> Unit,
 ) {
     Box(modifier = modifier.fillMaxSize()) {
         when (state) {

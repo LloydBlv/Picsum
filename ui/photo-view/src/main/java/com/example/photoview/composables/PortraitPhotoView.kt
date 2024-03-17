@@ -11,7 +11,7 @@ import com.example.photoview.PhotoViewUiState
 internal fun PortraitPhotoView(
     state: PhotoViewUiState,
     imageUrl: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
         PicsumImage(

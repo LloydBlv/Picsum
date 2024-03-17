@@ -13,7 +13,7 @@ import com.example.photoview.PhotoViewUiState
 internal fun LandscapePhotoView(
     state: PhotoViewUiState,
     imageUrl: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),

@@ -21,6 +21,7 @@ import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.RoborazziRule
 import com.github.takahirom.roborazzi.captureRoboImage
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
@@ -63,7 +64,7 @@ class PhotosListScreenshotTest {
     fun successStateTest() {
         val repository = PhotoRepositoryFake()
         val photos = runBlocking {
-            repository.getPhotos().getOrNull()!!.map(Photo::toUiPhoto).toPersistentList()
+            repository.getPhotos().first().getOrNull()!!.map(Photo::toUiPhoto).toPersistentList()
         }
         composeRule.setContent {
             PhotosListScreen(
@@ -78,7 +79,7 @@ class PhotosListScreenshotTest {
     fun failedStateTest() {
         composeRule.setContent {
             PhotosListScreenContent(
-                state = PhotoListUiState.Failure(Throwable("Failed")),
+                state = PhotoListUiState.Failure("Failed"),
                 eventSink = {},
             )
         }

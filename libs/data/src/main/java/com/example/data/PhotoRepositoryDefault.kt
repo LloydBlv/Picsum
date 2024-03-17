@@ -10,11 +10,10 @@ import kotlinx.coroutines.flow.map
 
 class PhotoRepositoryDefault @Inject constructor(
     private val photoService: PhotoService,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : PhotoRepository {
     override fun getPhotos() =
         flow { emit(photoService.getPhotos()) }
             .map { it.mapValue { it.map(PhotoDto::toPhoto) } }
             .flowOn(ioDispatcher)
-
 }

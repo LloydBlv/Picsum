@@ -23,7 +23,7 @@ import com.example.photoslist.models.PhotosListEvents
 internal fun BoxScope.FailureScreen(
     error: String,
     modifier: Modifier = Modifier,
-    eventSink: (PhotosListEvents) -> Unit
+    eventSink: (PhotosListEvents) -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -35,7 +35,7 @@ internal fun BoxScope.FailureScreen(
         Text(
             text = error,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { eventSink.invoke(PhotosListEvents.RetryClicked) }) {

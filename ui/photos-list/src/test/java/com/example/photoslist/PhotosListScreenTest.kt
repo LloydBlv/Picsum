@@ -109,7 +109,7 @@ class PhotosListScreenTest {
     fun `when state is error, error message is displayed`() {
         val error = Throwable("error message")
         composeTestRule.setContent {
-            PhotosListScreen(state = PhotoListUiState.Failure(error))
+            PhotosListScreen(state = PhotoListUiState.Failure(error.message!!))
         }
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
         composeTestRule.onNodeWithTag("photo_list").assertIsNotDisplayed()
@@ -122,7 +122,7 @@ class PhotosListScreenTest {
 
         val error = Throwable("error message")
         composeTestRule.setContent {
-            PhotosListScreen(state = PhotoListUiState.Failure(error, events))
+            PhotosListScreen(state = PhotoListUiState.Failure(error.message!!, events))
         }
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
         composeTestRule.onNodeWithTag("photo_list").assertIsNotDisplayed()
