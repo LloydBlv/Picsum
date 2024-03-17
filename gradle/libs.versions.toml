@@ -4,8 +4,7 @@ assertk = "0.28.0"
 circuit = "0.19.1"
 coilCompose = "2.6.0"
 converterMoshi = "2.9.0"
-hiltAndroid = "2.51"
-hiltAndroidCompiler = "2.51"
+dagger = "2.51"
 javaxInject = "1"
 kotlin = "1.9.22"
 coreKtx = "1.12.0"
@@ -33,7 +32,10 @@ ksp = "1.9.22-1.0.17"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+circuit-codegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuit" }
+circuit-codegen-annotations = { module = "com.slack.circuit:circuit-codegen-annotations", version.ref = "circuit" }
 circuit-runtime-presenter = { module = "com.slack.circuit:circuit-runtime-presenter", version.ref = "circuit" }
+circuit-runtime-ui = { module = "com.slack.circuit:circuit-runtime-ui", version.ref = "circuit" }
 circuit-runtime = { module = "com.slack.circuit:circuit-runtime", version.ref = "circuit" }
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
 circuit-test = { module = "com.slack.circuit:circuit-test", version.ref = "circuit" }
@@ -41,6 +43,7 @@ circuit-backstack = { module = "com.slack.circuit:circuit-backstack", version.re
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 coil-test = { module = "io.coil-kt:coil-test", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }

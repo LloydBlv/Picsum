@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.roborazzi)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -25,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildFeatures {
         compose = true
@@ -38,16 +40,31 @@ android {
         kotlinCompilerExtensionVersion = "1.5.10"
     }
     testOptions.unitTests.isIncludeAndroidResources = true
+
+    ksp {
+        arg("circuit.codegen.mode", "hilt")
+    }
 }
 
 dependencies {
     implementation(project(":common:screens"))
     implementation(project(":libs:domain"))
+    runtimeOnly(project(":libs:data"))
+
+    implementation(libs.dagger)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
     testImplementation(project(":common:testing"))
     testImplementation(libs.assertk)
     testImplementation(libs.moshi)
+
     implementation(libs.circuit.runtime.presenter)
+    implementation(libs.circuit.runtime.ui)
     testImplementation(libs.circuit.test)
+    api(libs.circuit.codegen.annotations)
+    ksp(libs.circuit.codegen)
+
     implementation(libs.kotlinx.collections.immutable)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.activity.compose)
