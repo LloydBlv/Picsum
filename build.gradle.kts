@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.dagger.hilt) apply false
     alias(libs.plugins.ksp) apply false
+    id("com.savvasdalkitsis.module-dependency-graph") version "0.10"
 }
