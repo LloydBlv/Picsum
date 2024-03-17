@@ -12,7 +12,6 @@ import com.example.photoview.PhotoViewUiState
 @Composable
 internal fun LandscapePhotoView(
     state: PhotoViewUiState,
-    imageUrl: String,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -20,10 +19,10 @@ internal fun LandscapePhotoView(
         verticalArrangement = Arrangement.Center,
     ) {
         PicsumImage(
-            url = imageUrl,
+            remotePhoto = state.remotePhoto,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(state.size.ratio),
+                .aspectRatio(state.remotePhoto.size.ratio),
         )
         AuthorNameText(state.authorName)
     }

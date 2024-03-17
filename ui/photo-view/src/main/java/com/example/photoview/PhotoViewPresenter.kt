@@ -1,6 +1,8 @@
 package com.example.photoview
 
 import androidx.compose.runtime.Composable
+import com.example.domain.models.models.Id
+import com.example.domain.models.models.RemotePhoto
 import com.example.domain.models.models.Size
 import com.example.screens.PhotoViewScreen
 import com.slack.circuit.codegen.annotations.CircuitInject
@@ -23,15 +25,13 @@ class PhotoViewPresenter @AssistedInject constructor(
             }
         }
         return PhotoViewUiState(
-            size = Size(screen.width, screen.height),
-            imageUrl = createImageUrl(screen.width, screen.height, screen.id),
+            remotePhoto = RemotePhoto(
+                id = Id(screen.id),
+                size = Size(screen.width, screen.height),
+            ),
             authorName = screen.authorName,
             eventSink = ::eventSink,
         )
-    }
-
-    private fun createImageUrl(width: Int, height: Int, id: Int): String {
-        return "https://picsum.photos/$width/$height?image=$id"
     }
 }
 

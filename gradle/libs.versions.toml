@@ -48,6 +48,7 @@ circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.
 circuit-test = { module = "com.slack.circuit:circuit-test", version.ref = "circuit" }
 circuit-backstack = { module = "com.slack.circuit:circuit-backstack", version.ref = "circuit" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+coil-coil = { module = "io.coil-kt:coil", version.ref = "coilCompose" }
 coil-test = { module = "io.coil-kt:coil-test", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "hilt" }

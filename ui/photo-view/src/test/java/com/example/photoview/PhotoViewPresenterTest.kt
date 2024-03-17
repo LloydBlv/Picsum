@@ -4,6 +4,7 @@ import assertk.all
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.prop
+import com.example.domain.models.models.RemotePhoto
 import com.example.domain.models.models.Size
 import com.example.screens.PhotoViewScreen
 import com.example.screens.PhotosListScreen
@@ -32,8 +33,7 @@ class PhotoViewPresenterTest {
         presenter.test {
             assertThat(awaitItem()).all {
                 prop(PhotoViewUiState::authorName).isEqualTo("John Doe")
-                prop(PhotoViewUiState::imageUrl).isEqualTo("https://picsum.photos/123/456?image=1")
-                prop(PhotoViewUiState::size).isEqualTo(Size(123, 456))
+                prop(PhotoViewUiState::remotePhoto).prop(RemotePhoto::size).isEqualTo(Size(123, 456))
             }
         }
     }

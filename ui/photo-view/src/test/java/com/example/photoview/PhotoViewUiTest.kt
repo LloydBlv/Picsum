@@ -11,6 +11,8 @@ import coil.Coil
 import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi
 import coil.test.FakeImageLoaderEngine
+import com.example.domain.models.models.Id
+import com.example.domain.models.models.RemotePhoto
 import com.example.domain.models.models.Size
 import com.example.photoview.composables.PhotoViewScreen
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
@@ -59,8 +61,10 @@ class PhotoViewUiTest {
         composeTestRule.setContent {
             PhotoViewScreen(
                 state = PhotoViewUiState(
-                    size = Size(width = 5000, height = 3333),
-                    imageUrl = "https://example.com/image.jpg",
+                    remotePhoto = RemotePhoto(
+                        size = Size(width = 5000, height = 3333),
+                        id = Id(1),
+                    ),
                     authorName = "author1",
                     eventSink = {},
                 ),
@@ -74,8 +78,10 @@ class PhotoViewUiTest {
         composeTestRule.setContent {
             PhotoViewScreen(
                 state = PhotoViewUiState(
-                    size = Size(width = 3887, height = 4899),
-                    imageUrl = "https://example.com/image.jpg",
+                    remotePhoto = RemotePhoto(
+                        size = Size(width = 3887, height = 4899),
+                        id = Id(1),
+                    ),
                     authorName = "author1",
                     eventSink = {},
                 ),
