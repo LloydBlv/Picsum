@@ -1,12 +1,19 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.photoslist.composables
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.photoslist.R
 import com.example.photoslist.models.PhotoListUiState
 import com.example.photoslist.models.PhotosListEvents
 import com.example.screens.PhotosListScreen
@@ -20,6 +27,7 @@ fun PhotosListScreen(state: PhotoListUiState, modifier: Modifier = Modifier) {
     val eventSink = state.eventSink
     Scaffold(
         modifier = modifier,
+        topBar = { PhotosListTopBar() },
     ) {
         PhotosListScreenContent(
             modifier = Modifier.padding(it),
@@ -27,6 +35,13 @@ fun PhotosListScreen(state: PhotoListUiState, modifier: Modifier = Modifier) {
             eventSink = eventSink,
         )
     }
+}
+
+@Composable
+private fun PhotosListTopBar() {
+    TopAppBar(title = {
+        Text(text = stringResource(id = R.string.app_name))
+    })
 }
 
 @Composable
