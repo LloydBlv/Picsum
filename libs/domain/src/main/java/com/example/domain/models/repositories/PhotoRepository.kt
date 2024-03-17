@@ -1,7 +1,8 @@
 package com.example.domain.models.repositories
 
 import com.example.domain.models.models.Photo
+import kotlinx.coroutines.flow.Flow
 
 interface PhotoRepository {
-    suspend fun getPhotos(): Result<List<Photo>>
+    fun getPhotos(): Flow<Result<List<Photo>>>
 }
