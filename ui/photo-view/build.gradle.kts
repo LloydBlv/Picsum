@@ -51,8 +51,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.ui.test.junit4)
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
     testImplementation(libs.assertk)
+
+    implementation(libs.coil.compose)
+    testImplementation(libs.coil.test)
 
     implementation(libs.circuit.runtime.presenter)
     testImplementation(libs.circuit.test)

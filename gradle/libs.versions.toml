@@ -2,6 +2,7 @@
 agp = "8.4.0-alpha13"
 assertk = "0.28.0"
 circuit = "0.19.1"
+coilCompose = "2.6.0"
 converterMoshi = "2.9.0"
 kotlin = "1.9.22"
 coreKtx = "1.12.0"
@@ -32,6 +33,8 @@ circuit-runtime = { module = "com.slack.circuit:circuit-runtime", version.ref = 
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuit" }
 circuit-test = { module = "com.slack.circuit:circuit-test", version.ref = "circuit" }
 circuit-backstack = { module = "com.slack.circuit:circuit-backstack", version.ref = "circuit" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+coil-test = { module = "io.coil-kt:coil-test", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
