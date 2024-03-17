@@ -98,3 +98,4 @@ roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 cacheFixPlugin = { id = "org.gradle.android.cache-fix", version = "3.0.1" }
+dependencyGraph = { id = "com.savvasdalkitsis.module-dependency-graph", version = "0.10" }

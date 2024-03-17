@@ -10,5 +10,5 @@ plugins {
     alias(libs.plugins.spotless) apply false
     alias(libs.plugins.cacheFixPlugin) apply false
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
-    id("com.savvasdalkitsis.module-dependency-graph") version "0.10"
+    alias(libs.plugins.dependencyGraph)
 }
