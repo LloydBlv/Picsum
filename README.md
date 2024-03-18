@@ -32,13 +32,13 @@ Picsum is an Android application that not only showcases the integration of cont
 Here are various screenshots demonstrating the app's functionality and UI states:
 
 <p float="left">
-  <img src="screenshots/photos_list.jpg" alt="Photos List View" width="200" />
-  <img src="screenshots/portrait_photo_view.jpg" alt="Portrait Photo View" width="200" />
-  <img src="screenshots/landscape_photo_view.jpg" alt="Landscape Photo View" width="200" />
-  <img src="screenshots/loading.jpeg" alt="Loading State" width="200" />
-  <img src="screenshots/failed_state.jpeg" alt="Failed State" width="200" />
-  <img src="screenshots/grid_view.jpeg" alt="Failed State" width="200" />
-  <img src="screenshots/foldable_unfold_grid.jpeg" alt="Failed State" width="200" />
+  <img src="screenshots/photos_list.jpg" alt="Photos List View" width="25%" />
+  <img src="screenshots/portrait_photo_view.jpg" alt="Portrait Photo View" width="25%" />
+  <img src="screenshots/landscape_photo_view.jpg" alt="Landscape Photo View" width="25%" />
+  <img src="screenshots/loading.jpeg" alt="Loading State" width="25%" />
+  <img src="screenshots/failed_state.jpeg" alt="Failed State" width="25%" />
+  <img src="screenshots/grid_view.jpeg" alt="Grid View" width="25%" />
+  <img src="screenshots/foldable_unfold_grid.jpeg" alt="Foldable view" width="50%" />
 </p>
 
 ## Project Modules 📚
