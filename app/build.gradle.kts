@@ -7,6 +7,9 @@ plugins {
 
 android {
     namespace = "com.example.picsum"
+    defaultConfig {
+        testInstrumentationRunner = "com.example.picsum.CustomTestRunner"
+    }
     signingConfigs {
         create("release") {
             storeFile = file(System.getProperty("user.home") + "/.android/debug.keystore")
@@ -44,10 +47,18 @@ dependencies {
     implementation(libs.circuit.backstack)
     implementation(libs.circuit.foundation)
 
+    androidTestImplementation(project(":common:testing"))
+    androidTestImplementation(project(":libs:data"))
+    androidTestImplementation(libs.moshi)
+    androidTestImplementation(libs.core.ktx)
+
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.hilt.android.compiler)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.test.manifest)

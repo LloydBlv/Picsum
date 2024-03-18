@@ -14,6 +14,7 @@ fun Project.configureKotlin() {
             allWarningsAsErrors = warningsAsErrors.toBoolean()
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xcontext-receivers",
             )
         }
     }

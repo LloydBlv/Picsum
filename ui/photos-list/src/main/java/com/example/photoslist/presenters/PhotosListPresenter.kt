@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import com.example.domain.models.models.Photo
 import com.example.domain.models.usecases.GetPhotosUseCase
@@ -33,7 +33,7 @@ class PhotosListPresenter @AssistedInject constructor(
         LaunchedEffect(key1 = Unit) {
             getPhotosUseCase.invoke(Unit)
         }
-        var showStaggeredView by remember {
+        var showStaggeredView by rememberSaveable {
             mutableStateOf(true)
         }
         val eventSink: (PhotosListEvents) -> Unit = {

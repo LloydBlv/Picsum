@@ -18,6 +18,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.example.photoslist.R
 import com.example.photoslist.models.PhotoListUiState
@@ -77,7 +78,7 @@ fun IconsToggleButton(
         }
     }
     IconButton(
-        modifier = modifier,
+        modifier = modifier.testTag("toggle_view_button"),
         onClick = onClick,
     ) {
         Icon(
