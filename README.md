@@ -37,6 +37,8 @@ Here are various screenshots demonstrating the app's functionality and UI states
   <img src="screenshots/landscape_photo_view.jpg" alt="Landscape Photo View" width="200" />
   <img src="screenshots/loading.jpeg" alt="Loading State" width="200" />
   <img src="screenshots/failed_state.jpeg" alt="Failed State" width="200" />
+  <img src="screenshots/grid_view.jpeg" alt="Failed State" width="200" />
+  <img src="screenshots/foldable_unfold_grid.jpeg" alt="Failed State" width="200" />
 </p>
 
 ## Project Modules 📚
