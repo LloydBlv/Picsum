@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.domain.models.models.Author
 import com.example.domain.models.models.FileName
 import com.example.domain.models.models.Id
+import com.example.domain.models.models.RemoteThumbnail
 import com.example.domain.models.models.Size
 import com.example.photoslist.composables.PhotosListScreen
 import com.example.photoslist.models.PhotoListUiState
@@ -45,22 +46,35 @@ class PhotosListScreenTest {
                 fileName = FileName("file1"),
                 id = Id(1),
                 author = Author(name = "author1", url = ""),
+                remoteThumbnail = RemoteThumbnail(
+                    id = Id(1),
+                    size = Size(100, 100),
+                ),
             ),
             UiPhoto(
                 size = Size(100, 100),
                 fileName = FileName("file2"),
                 id = Id(2),
                 author = Author(name = "author2", url = ""),
+                remoteThumbnail = RemoteThumbnail(
+                    id = Id(2),
+                    size = Size(100, 100),
+                ),
             ),
         )
         composeTestRule.setContent {
-            PhotosListScreen(state = PhotoListUiState.Success(photos.toPersistentList()))
+            PhotosListScreen(
+                state = PhotoListUiState.Success(
+                    showStaggeredView = false,
+                    photos = photos.toPersistentList(),
+                ),
+            )
         }
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
         composeTestRule.onNodeWithTag("photo_list").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("photo_item_0").assertIsDisplayed()
         composeTestRule.onNodeWithTag("photo_item_1").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("photo_item_2").assertDoesNotExist()
+        composeTestRule.onNodeWithTag("photo_item_2").assertIsDisplayed()
+        composeTestRule.onNodeWithTag("photo_item_3").assertDoesNotExist()
         composeTestRule.onNodeWithTag("error").assertIsNotDisplayed()
     }
 
@@ -72,18 +86,27 @@ class PhotosListScreenTest {
                 fileName = FileName("file1"),
                 id = Id(1),
                 author = Author(name = "author1", url = ""),
+                remoteThumbnail = RemoteThumbnail(
+                    id = Id(1),
+                    size = Size(100, 100),
+                ),
             ),
             UiPhoto(
                 size = Size(100, 100),
                 fileName = FileName("file2"),
                 id = Id(2),
                 author = Author(name = "author2", url = ""),
+                remoteThumbnail = RemoteThumbnail(
+                    id = Id(2),
+                    size = Size(100, 100),
+                ),
             ),
         )
         val events = TestEventSink<PhotosListEvents>()
         composeTestRule.setContent {
             PhotosListScreen(
                 state = PhotoListUiState.Success(
+                    showStaggeredView = false,
                     photos = photos.toPersistentList(),
                     eventSink = events,
                 ),
@@ -91,17 +114,17 @@ class PhotosListScreenTest {
         }
         composeTestRule.onNodeWithTag("loading").assertIsNotDisplayed()
         composeTestRule.onNodeWithTag("photo_list").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("photo_item_0").run {
-            assertIsDisplayed()
-            performClick()
-        }
-        events.assertEvents(PhotosListEvents.PhotoClicked(photos[0]))
         composeTestRule.onNodeWithTag("photo_item_1").run {
             assertIsDisplayed()
             performClick()
         }
+        events.assertEvents(PhotosListEvents.PhotoClicked(photos[0]))
+        composeTestRule.onNodeWithTag("photo_item_2").run {
+            assertIsDisplayed()
+            performClick()
+        }
         events.assertEventAt(1, PhotosListEvents.PhotoClicked(photos[1]))
-        composeTestRule.onNodeWithTag("photo_item_2").assertDoesNotExist()
+        composeTestRule.onNodeWithTag("photo_item_3").assertDoesNotExist()
         composeTestRule.onNodeWithTag("error").assertIsNotDisplayed()
     }
 

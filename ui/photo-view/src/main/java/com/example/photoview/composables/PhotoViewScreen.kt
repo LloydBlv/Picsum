@@ -27,7 +27,7 @@ internal fun PhotoViewScreen(state: PhotoViewUiState, modifier: Modifier = Modif
 
 @Composable
 private fun PhotoViewContent(state: PhotoViewUiState, modifier: Modifier = Modifier) {
-    if (state.remotePhoto.size.isLandscape) {
+    if (state.uiRemotePhoto.remotePhoto.size.isLandscape) {
         LandscapePhotoView(state = state, modifier = modifier)
     } else {
         PortraitPhotoView(state = state, modifier = modifier)

@@ -55,7 +55,7 @@ jobs:
               id: screenshotsrecord
               if: steps.screenshotsverify.outcome == 'failure' && github.event_name == 'pull_request'
               run: |
-                  ./gradlew recordRoborazziDemoDebug
+                  ./gradlew recordRoborazziDebug
 
             - name: Push new screenshots if available
               uses: stefanzweifel/git-auto-commit-action@v5
