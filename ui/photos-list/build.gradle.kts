@@ -33,6 +33,11 @@ dependencies {
     testImplementation(libs.assertk)
     testImplementation(libs.moshi)
 
+    implementation(libs.coil.compose)
+    testImplementation(libs.coil.test)
+
+    implementation(libs.androidx.material.icons.extended)
+
     implementation(libs.circuit.runtime.presenter)
     implementation(libs.circuit.runtime.ui)
     implementation(libs.circuit.retained)
