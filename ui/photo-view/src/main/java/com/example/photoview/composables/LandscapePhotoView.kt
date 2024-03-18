@@ -19,11 +19,15 @@ internal fun LandscapePhotoView(
         verticalArrangement = Arrangement.Center,
     ) {
         PicsumImage(
-            remotePhoto = state.remotePhoto,
+            remotePhoto = state.uiRemotePhoto,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(state.remotePhoto.size.ratio),
+                .aspectRatio(state.uiRemotePhoto.remotePhoto.size.ratio)
+                .weight(0.85f),
         )
-        AuthorNameText(state.authorName)
+        AuthorNameText(
+            state.authorName,
+            modifier = Modifier.fillMaxWidth().weight(0.15f),
+        )
     }
 }

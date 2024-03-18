@@ -33,7 +33,7 @@ class PhotoViewPresenterTest {
         presenter.test {
             assertThat(awaitItem()).all {
                 prop(PhotoViewUiState::authorName).isEqualTo("John Doe")
-                prop(PhotoViewUiState::remotePhoto).prop(RemotePhoto::size).isEqualTo(Size(123, 456))
+                transform { it.uiRemotePhoto.remotePhoto }.prop(RemotePhoto::size).isEqualTo(Size(123, 456))
             }
         }
     }

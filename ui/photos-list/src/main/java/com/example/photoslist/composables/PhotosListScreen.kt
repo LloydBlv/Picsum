@@ -6,11 +6,17 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.GridView
+import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.photoslist.R
@@ -27,7 +33,12 @@ fun PhotosListScreen(state: PhotoListUiState, modifier: Modifier = Modifier) {
     val eventSink = state.eventSink
     Scaffold(
         modifier = modifier,
-        topBar = { PhotosListTopBar() },
+        topBar = {
+            PhotosListTopBar(
+                showStaggeredView = (state as? PhotoListUiState.Success)?.showStaggeredView,
+                eventSink = eventSink,
+            )
+        },
     ) {
         PhotosListScreenContent(
             modifier = Modifier.padding(it),
@@ -38,10 +49,42 @@ fun PhotosListScreen(state: PhotoListUiState, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun PhotosListTopBar() {
-    TopAppBar(title = {
-        Text(text = stringResource(id = R.string.app_name))
-    })
+private fun PhotosListTopBar(showStaggeredView: Boolean?, eventSink: (PhotosListEvents) -> Unit) {
+    TopAppBar(
+        title = { Text(text = stringResource(id = R.string.app_name)) },
+        actions = {
+            if (showStaggeredView != null) {
+                IconsToggleButton(
+                    showStaggeredView = showStaggeredView == true,
+                    onClick = { eventSink.invoke(PhotosListEvents.ToggleListViewType) },
+                )
+            }
+        },
+    )
+}
+
+@Composable
+fun IconsToggleButton(
+    showStaggeredView: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val icon = remember(showStaggeredView) {
+        if (!showStaggeredView) {
+            Icons.Default.GridView
+        } else {
+            Icons.Default.TextFields
+        }
+    }
+    IconButton(
+        modifier = modifier,
+        onClick = onClick,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+        )
+    }
 }
 
 @Composable
@@ -65,7 +108,11 @@ internal fun PhotosListScreenContent(
             }
 
             is PhotoListUiState.Success -> {
-                PhotoItems(state.photos, eventSink)
+                if (state.showStaggeredView) {
+                    GridView(state.photos, eventSink)
+                } else {
+                    PhotoItems(state.photos, eventSink)
+                }
             }
         }
     }
