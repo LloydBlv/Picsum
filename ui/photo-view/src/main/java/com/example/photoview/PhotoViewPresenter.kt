@@ -25,9 +25,11 @@ class PhotoViewPresenter @AssistedInject constructor(
             }
         }
         return PhotoViewUiState(
-            remotePhoto = RemotePhoto(
-                id = Id(screen.id),
-                size = Size(screen.width, screen.height),
+            uiRemotePhoto = UiRemotePhoto(
+                RemotePhoto(
+                    id = Id(screen.id),
+                    size = Size(screen.width, screen.height),
+                ),
             ),
             authorName = screen.authorName,
             eventSink = ::eventSink,

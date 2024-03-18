@@ -3,6 +3,9 @@ package com.example.photoslist.presenters
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.example.domain.models.models.Photo
 import com.example.domain.models.usecases.GetPhotosUseCase
 import com.example.photoslist.models.PhotoListUiState
@@ -30,6 +33,9 @@ class PhotosListPresenter @AssistedInject constructor(
         LaunchedEffect(key1 = Unit) {
             getPhotosUseCase.invoke(Unit)
         }
+        var showStaggeredView by remember {
+            mutableStateOf(true)
+        }
         val eventSink: (PhotosListEvents) -> Unit = {
             when (it) {
                 is PhotoClicked -> navigator.goTo(
@@ -42,10 +48,12 @@ class PhotosListPresenter @AssistedInject constructor(
                 )
 
                 PhotosListEvents.RetryClicked -> getPhotosUseCase.invoke(Any())
+                PhotosListEvents.ToggleListViewType -> showStaggeredView = !showStaggeredView
             }
         }
         return when {
             state?.isSuccess == true -> PhotoListUiState.Success(
+                showStaggeredView = showStaggeredView,
                 photos = state!!.getOrNull()?.map(Photo::toUiPhoto).orEmpty().toPersistentList(),
                 eventSink = eventSink,
             )

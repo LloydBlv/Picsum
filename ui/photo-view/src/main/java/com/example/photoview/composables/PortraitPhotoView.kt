@@ -14,7 +14,7 @@ internal fun PortraitPhotoView(
 ) {
     Column(modifier = modifier) {
         PicsumImage(
-            remotePhoto = state.remotePhoto,
+            remotePhoto = state.uiRemotePhoto,
             modifier = Modifier
                 .weight(0.8f)
                 .fillMaxWidth()

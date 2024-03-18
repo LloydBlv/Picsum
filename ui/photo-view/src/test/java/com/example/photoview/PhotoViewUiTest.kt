@@ -61,9 +61,11 @@ class PhotoViewUiTest {
         composeTestRule.setContent {
             PhotoViewScreen(
                 state = PhotoViewUiState(
-                    remotePhoto = RemotePhoto(
-                        size = Size(width = 5000, height = 3333),
-                        id = Id(1),
+                    uiRemotePhoto = UiRemotePhoto(
+                        RemotePhoto(
+                            size = Size(width = 5000, height = 3333),
+                            id = Id(1),
+                        ),
                     ),
                     authorName = "author1",
                     eventSink = {},
@@ -78,9 +80,11 @@ class PhotoViewUiTest {
         composeTestRule.setContent {
             PhotoViewScreen(
                 state = PhotoViewUiState(
-                    remotePhoto = RemotePhoto(
-                        size = Size(width = 3887, height = 4899),
-                        id = Id(1),
+                    uiRemotePhoto = UiRemotePhoto(
+                        RemotePhoto(
+                            size = Size(width = 3887, height = 4899),
+                            id = Id(1),
+                        ),
                     ),
                     authorName = "author1",
                     eventSink = {},
