@@ -2,11 +2,11 @@ package com.example.data
 
 import com.example.domain.models.models.IoDispatcher
 import com.example.domain.models.repositories.PhotoRepository
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 class PhotoRepositoryDefault @Inject constructor(
     private val photoService: PhotoService,

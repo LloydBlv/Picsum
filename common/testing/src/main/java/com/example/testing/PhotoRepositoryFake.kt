@@ -9,11 +9,11 @@ import com.example.domain.models.repositories.PhotoRepository
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-import java.io.FileNotFoundException
-import java.lang.reflect.Type
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import okio.BufferedSource
+import java.io.FileNotFoundException
+import java.lang.reflect.Type
 
 class PhotoRepositoryFake(
     private val moshi: Moshi = Moshi.Builder().build(),

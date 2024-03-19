@@ -24,7 +24,9 @@ class PhotoRepositoryTest {
                 hasSize(993)
                 transform { it.first() }.all {
                     prop(Photo::id).isEqualTo(Id(0))
-                    prop(Photo::author).isEqualTo(Author("Alejandro Escamilla", "https://unsplash.com/photos/yC-Yzbqy7PY"))
+                    prop(
+                        Photo::author
+                    ).isEqualTo(Author("Alejandro Escamilla", "https://unsplash.com/photos/yC-Yzbqy7PY"))
                     prop(Photo::size).all {
                         prop(Size::width).isEqualTo(5000)
                         prop(Size::height).isEqualTo(3333)

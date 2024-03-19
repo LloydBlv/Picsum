@@ -35,6 +35,8 @@ ktlint = "1.0.1"
 turbine = "1.1.0"
 androidxComposeCompiler = "1.5.10"
 composeLinkChecks = "1.3.1"
+detekt = "1.23.5"
+detektCompose = "0.3.12"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -93,6 +95,9 @@ android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref 
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 spotless-gradlePlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+detekt-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -106,3 +111,4 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 cacheFixPlugin = { id = "org.gradle.android.cache-fix", version = "3.0.1" }
 dependencyGraph = { id = "com.savvasdalkitsis.module-dependency-graph", version = "0.10" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
