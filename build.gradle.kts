@@ -13,4 +13,5 @@ plugins {
     alias(libs.plugins.dependencyGraph)
     id("com.osacky.doctor") version "0.9.2"
     alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
